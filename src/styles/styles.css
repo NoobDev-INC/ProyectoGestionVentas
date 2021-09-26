@@ -1,0 +1,14 @@
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.mainContainer > main{
+    height: 100%;
+}
+
+.mainContainer > footer{
+    background-color: red;
+    padding: 10px;
+}

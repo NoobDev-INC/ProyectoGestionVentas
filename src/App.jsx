@@ -1,3 +1,4 @@
+import Layout from 'layouts/Layout';
 import Index from 'pages';
 import loginPage from 'pages/login';
 import{
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <Router>
+       <Layout>
         <Switch>
           <Route path='/login'>
             <loginPage/>
@@ -20,8 +22,8 @@ function App() {
             <Index/>
           </Route>
         </Switch>
+       </Layout>
       </Router>
-
     </div>
   );
 }
