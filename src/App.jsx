@@ -1,6 +1,6 @@
 import Layout from 'layouts/Layout';
 import Index from 'pages';
-import loginPage from 'pages/login';
+import Login from 'pages/login';
 import{
   BrowserRouter as Router,
   Switch,
@@ -17,7 +17,7 @@ function App() {
        <Layout>
         <Switch>
           <Route path='/login'>
-            <loginPage/>
+            <Login/>
           </Route>
           <Route path='/'>
             <Index/>

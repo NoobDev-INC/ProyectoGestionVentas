@@ -15,3 +15,8 @@
     background-color: red;
     padding: 10px;
 }
+
+.Navbar{
+    padding: 20px;
+    justify-content: space-between;
+}
