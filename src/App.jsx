@@ -1,7 +1,9 @@
 import Layout from 'layouts/Layout';
 import Index from 'pages';
-import Ventas from 'pages/Ventas'
+import Ventas from 'pages/Ventas';
 import Login from 'pages/login';
+import Menu from 'pages/menu';
+import PrivateLayout from 'layouts/PrivateLayout';
 
 import{
   BrowserRouter as Router,
@@ -16,19 +18,29 @@ function App() {
   return (
     <div className="App">
       <Router>
-       <Layout>
         <Switch>
-          <Route path='/login'>
-            <Login/>
+          <Route path={['/Index']}>
+            <Layout>
+              <Switch>
+                <Route path='/Index'>
+                  <Index/>
+                </Route>
+              </Switch>
+            </Layout>
           </Route>
-          <Route path='/ventas'>
-            <Ventas />
+          <Route path={['/menu','/Ventas']}>
+            <PrivateLayout>
+              <Switch>
+                <Route path="/menu">
+                  <Menu/>
+                </Route>
+                <Route path="/Ventas">
+                  <Ventas/>
+                </Route>
+              </Switch>
+            </PrivateLayout>
           </Route>
-          <Route path='/'>
-            <Index/>
-          </Route> 
         </Switch>
-       </Layout>
       </Router>
     </div>  
   );
