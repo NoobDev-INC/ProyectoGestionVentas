@@ -1,33 +1,47 @@
 import React from 'react'
-import LogoV from 'media/Venta.svg'
-import LogoP from 'media/Producto.svg'
-import LogoU from 'media/Usuarios.svg'
-import LogoB from 'media/Build.svg'
+import { ReactComponent as LogoV } from 'media/Venta.svg'
+import { ReactComponent as LogoP } from 'media/Producto.svg'
+import { ReactComponent as LogoU } from 'media/Usuarios.svg'
+import { ReactComponent as LogoB } from 'media/Build.svg'
+import { Link } from 'react-router-dom'
+import '../styles/styles.css'
 
 const menu = () => {
     return (
-        <div>
-            <ul className="flex h-screen justify-center">
-                <div className="grid grid-cols-3 gap-20 place-content-center ">
-                    <section className="grid  hover:bg-indigo-400 cursor-pointer">
-                        <img src={LogoV} alt="Venta" />
-                        <button className="border-double text-white bg-blue-500 h-10">Ventas</button>
+        <ul className="menu">
+            <div className="menu-container">
+                <div className="items-file">
+                    <Link to= "/Ventas">
+                        <section className="container-item">
+                            <LogoV />
+                            <p className="item-button">Ventas</p>
+                        </section>
+                    </Link>
+                    <section className="container-item">
+                        <LogoP />
+                        <p className="item-button">Productos</p>
                     </section>
-                    <section className="grid  hover:bg-indigo-400 cursor-pointer">
-                        <img src={LogoP} alt="Producto" />
-                        <button className="border-double text-white bg-blue-500 ">Productos</button>
-                    </section>
-                    <section className="grid  hover:bg-indigo-400 cursor-pointer">
-                        <img src={LogoU} alt="Usuarios" />
-                        <button className="border-double text-white bg-blue-500 ">Usuarios</button>
-                    </section>
-                    <section className="grid  hover:bg-indigo-400 cursor-pointer">
-                        <img src={LogoB} alt="Proximamente" />
-                        <button className="border-double text-white bg-indigo-800  w-40 h-10 ">Proximamente...</button>
+                    <section className="container-item">
+                        <LogoU />
+                        <p className="item-button">Usuarios</p>
                     </section>
                 </div>
-            </ul>
-        </div>
+                <div className="items-file">
+                    <section className="container-item">
+                        <LogoB />
+                        <p className="item-button">Proximamente...</p>
+                    </section>
+                    <section className="container-item">
+                        <LogoB />
+                        <p className="item-button">Proximamente...</p>
+                    </section>
+                    <section className="container-item">
+                        <LogoB />
+                        <p className="item-button">Proximamente...</p>
+                    </section>
+                </div>
+            </div>
+        </ul >
     )
 }
 
