@@ -1,7 +1,7 @@
 import Layout from 'layouts/Layout';
 import Index from 'pages';
-import loginPage from 'pages/login';
 import Ventas from 'pages/Ventas'
+import Login from 'pages/login';
 
 import{
   BrowserRouter as Router,
@@ -19,7 +19,7 @@ function App() {
        <Layout>
         <Switch>
           <Route path='/login'>
-            <loginPage/>
+            <Login/>
           </Route>
           <Route path='/ventas'>
             <Ventas />
