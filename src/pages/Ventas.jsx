@@ -1,34 +1,43 @@
 const ventas = () => {
   return (
-    <div className=' flex flex-col w-full justify-center items-center '>
-        <h2 className='m-16 text-center text-3xl font-extrabold text-gray-900'>
+    <div className='flex flex-col items-center justify-center'>
+        <h2 className='text-2xl font-extrabold text-gray-800'>
         Verificar información de las ventas
         </h2>
+        <h3 className=' mt-8 text-center  font-extrabold text-gray-400'>
+            Puede realizar la busqueda mediante alguna opcion que se visualiza en pantalla
+        </h3>
         <form className='mt-8 max-w-md'>
-            <div >
-            <input
-                    className="relative block w-full px-3 py-2 text-center border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    type="text"
-                    placeholder="Identificador de venta"
+            <label className='flex flex-col text-center' >
+                Identificador de venta
+                <input
+                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
+                    type='texto'
+                    placeholder='Identificador'
                 />
-            </div>
-            <div>
-            <input
-                    className="relative block w-full px-3 py-2 text-center border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    type="text"
-                    placeholder="Documento de identidad"
+            </label>
+            <label className='flex flex-col text-center' >
+                Documento de identidad
+                <input
+                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
+                    type='text'
+                    placeholder='Documento'
                 />
-            </div>
-            <div>
-            <input
-                    className="relative block w-full px-3 py-2 text-center border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    type="text"
-                    placeholder="Nombre del cliente"
+            </label>
+            <label className='flex flex-col text-center' >
+                Nombre del cliente
+                <input
+                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
+                    type='text'
+                    placeholder='Nombre'
                 />
-            </div>
-            <div>
-            <button className="relative block w-full px-3 py-2 text-center border border-gray-300 placeholder-gray-500 text-gray-900 rounded-xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type='submit'>Buscar</button>
-            </div>
+            </label>
+            <button
+                type='submit'
+                className=' bg-gray-50 border  border-gray-600 p-2 rounded-xl m-2'
+             >
+                Buscar informacion ventas
+        </button>
         </form>
     </div>    
   );
