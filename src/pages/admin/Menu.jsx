@@ -4,7 +4,7 @@ import { ReactComponent as LogoP } from 'media/Producto.svg'
 import { ReactComponent as LogoU } from 'media/Usuarios.svg'
 import { ReactComponent as LogoB } from 'media/Build.svg'
 import { Link } from 'react-router-dom'
-import '../styles/styles.css'
+import 'styles/styles.css'
 
 const menu = () => {
     return (
@@ -13,18 +13,22 @@ const menu = () => {
                 <div className="items-file">
                     <Link to= "/Ventas">
                         <section className="container-item">
-                            <LogoV />
+                            <LogoV/>
                             <p className="item-button">Ventas</p>
                         </section>
                     </Link>
-                    <section className="container-item">
-                        <LogoP />
-                        <p className="item-button">Productos</p>
-                    </section>
-                    <section className="container-item">
-                        <LogoU />
-                        <p className="item-button">Usuarios</p>
-                    </section>
+                    <Link to= "/Productos">
+                        <section className="container-item">
+                            <LogoP/>
+                            <p className="item-button">Productos</p>
+                        </section>
+                    </Link>
+                    <Link to="/Usuarios">
+                        <section className="container-item">
+                            <LogoU/>
+                            <p className="item-button">Usuarios</p>
+                        </section>
+                    </Link>
                 </div>
                 <div className="items-file">
                     <section className="container-item">

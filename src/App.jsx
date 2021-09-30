@@ -1,9 +1,11 @@
 import Layout from 'layouts/Layout';
-import Index from 'pages/Index';
-import Ventas from 'pages/Ventas';
-import Login from 'pages/Login';
-import Menu from 'pages/Menu';
-import Productos from 'pages/Productos.jsx';
+import Index from 'pages/auth/Index';
+import Login from 'pages/auth/Login';
+import Menu from 'pages/admin/Menu'
+import Usuarios from 'pages/users/Usuarios';
+import Actualizar from 'pages/users/Actualizar';
+import Productos from 'pages/product/Productos';
+import Ventas from 'pages/sale/Ventas';
 import PrivateLayout from 'layouts/PrivateLayout';
 import InternLayout from 'layouts/InternLayout';
 import AuthLayout from 'layouts/AuthLayout';
@@ -38,7 +40,7 @@ function App() {
               </Switch>
             </PrivateLayout>
           </Route>
-          <Route path={['/Ventas','/Productos']}>
+          <Route path={['/Ventas','/Productos','/Usuarios','/Actualizar']}>
             <InternLayout>
               <Switch>
                 <Route path="/Ventas">
@@ -46,6 +48,12 @@ function App() {
                 </Route>
                 <Route path="/Productos">
                   <Productos/>
+                </Route>
+                <Route path="/Usuarios">
+                  <Usuarios/>
+                </Route>
+                <Route path="/Actualizar">
+                  <Actualizar/>
                 </Route>
               </Switch>
             </InternLayout>
