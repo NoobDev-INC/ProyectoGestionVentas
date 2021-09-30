@@ -1,13 +1,13 @@
 import React from 'react';
-import Logo from 'media/LogoDev.png';
-import LogoH from 'media/Home.svg';
+import LogoDev from 'components/LogoDev';
+import LogoHome from 'components/LogoHome';
 import { Link } from 'react-router-dom';
 
 const AuthLayout = ({ children }) => {
   return (
     <div>
       <Link to='/Index'>
-        <img className="h-10 w-10" src={LogoH} alt="Home" />
+        <LogoHome/>
       </Link>
       <div className='min-h-screen flex flex-col items-center justify-center bg-gray-50 py-2 px-4 sm:px-6 lg:px-8'>
         <div className='w-full flex items-start'>
@@ -16,12 +16,11 @@ const AuthLayout = ({ children }) => {
           </Link>
         </div>
         <div >
-          <img className='mx-auto h-52 w-auto' src={Logo} alt='Workflow' />
+          <LogoDev/>
           {children}
         </div>
       </div>
-    </div>
-      
+    </div>  
   );
 };
 
