@@ -5,8 +5,8 @@ const InternNavbar = () => {
     return (
         <div>
             <Link to= "/menu">
-                <ul className="Navbar flex bg-blue-500  justify-between">
-                    <img className='h-16 w-50' src={LogoHome} alt='Home' />
+                <ul className="Navbar flex bg-blue-500  justify-between h-16">
+                    <img className='h-12 w-50 m-3' src={LogoHome} alt='Home' />
                     <li className="m-2">Perfil</li>
                 </ul>
             </Link>
