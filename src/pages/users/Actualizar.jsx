@@ -6,8 +6,6 @@ const Actualizar = () => {
         console.log("Hola, soy un use effect")
     },[])
 
-
-
     return (
         <div className="flex justify-center justify-items-center">
             <form className='flex flex-col m-80'>
