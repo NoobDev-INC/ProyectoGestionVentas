@@ -1,10 +1,12 @@
 import Layout from 'layouts/Layout';
-import Index from 'pages';
+import Index from 'pages/Index';
 import Ventas from 'pages/Ventas';
-import Login from 'pages/login';
-import Menu from 'pages/menu';
+import Login from 'pages/Login';
+import Menu from 'pages/Menu';
+import Productos from 'pages/Productos.jsx';
 import PrivateLayout from 'layouts/PrivateLayout';
 import InternLayout from 'layouts/InternLayout';
+import AuthLayout from 'layouts/AuthLayout';
 import{
   BrowserRouter as Router,
   Switch,
@@ -13,14 +15,12 @@ import{
 } from "react-router-dom"
 import 'styles/styles.css';
 
-
-
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path={['/index']}>
+          <Route path={['/Index']}>
             <Layout>
               <Switch>
                 <Route path='/Index'>
@@ -29,23 +29,35 @@ function App() {
               </Switch>
             </Layout>
           </Route>
-          <Route path={['/menu']}>
+          <Route path={['/Menu']}>
             <PrivateLayout>
               <Switch>
-                <Route path="/menu">
+                <Route path="/Menu">
                   <Menu/>
                 </Route>
               </Switch>
             </PrivateLayout>
           </Route>
-          <Route path={['/ventas']}>
+          <Route path={['/Ventas','/Productos']}>
             <InternLayout>
               <Switch>
-                <Route path="/ventas">
+                <Route path="/Ventas">
                   <Ventas/>
+                </Route>
+                <Route path="/Productos">
+                  <Productos/>
                 </Route>
               </Switch>
             </InternLayout>
+          </Route>
+          <Route path={['/Login']}>
+            <AuthLayout>
+              <Switch>
+                <Route path="/Login">
+                  <Login/>
+                </Route>
+              </Switch>
+            </AuthLayout>
           </Route>
         </Switch>
       </Router>
