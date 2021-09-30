@@ -3,6 +3,7 @@ import Index from 'pages/Index';
 import Ventas from 'pages/Ventas';
 import Login from 'pages/Login';
 import Menu from 'pages/Menu';
+import Productos from 'pages/Productos.jsx';
 import PrivateLayout from 'layouts/PrivateLayout';
 import InternLayout from 'layouts/InternLayout';
 import AuthLayout from 'layouts/AuthLayout';
@@ -13,8 +14,6 @@ import{
   Link
 } from "react-router-dom"
 import 'styles/styles.css';
-
-
 
 function App() {
   return (
@@ -39,11 +38,14 @@ function App() {
               </Switch>
             </PrivateLayout>
           </Route>
-          <Route path={['/Ventas']}>
+          <Route path={['/Ventas','/Productos']}>
             <InternLayout>
               <Switch>
                 <Route path="/Ventas">
                   <Ventas/>
+                </Route>
+                <Route path="/Productos">
+                  <Productos/>
                 </Route>
               </Switch>
             </InternLayout>
