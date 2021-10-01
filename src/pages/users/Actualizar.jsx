@@ -2,9 +2,9 @@ import React, {useEffect} from 'react'
 
 const Actualizar = () => {
 
-    useEffect(()=>{
-        console.log("Hola, soy un use effect")
-    },[])
+    const enviarDatosTabla = (e) => {
+
+    }
 
     return (
         <div className="flex justify-center justify-items-center">
@@ -15,7 +15,7 @@ const Actualizar = () => {
                     <input type="text" placeholder='Estado'/>
                     <input type="text" placeholder='Rol'/>
                 </div>
-                <button className='bg-indigo-500 text-white'>Actualizar</button>
+                <button onClick={enviarDatosTabla} className='bg-indigo-500 text-white'>Actualizar</button>
             </form>
         </div>
     )
