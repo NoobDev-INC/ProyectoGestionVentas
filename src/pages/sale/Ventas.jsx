@@ -35,9 +35,9 @@ const ventas = () => {
             <button
                 type='submit'
                 className=' bg-gray-50 border  border-gray-600 p-2 rounded-xl m-2'
-             >
+            >
                 Buscar informacion ventas
-        </button>
+            </button>
         </form>
     </div>    
   );
