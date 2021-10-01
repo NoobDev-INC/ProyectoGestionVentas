@@ -5,7 +5,9 @@ import Menu from 'pages/admin/Menu'
 import Usuarios from 'pages/users/Usuarios';
 import Actualizar from 'pages/users/Actualizar';
 import Productos from 'pages/product/Productos';
-import Ventas from 'pages/sale/Ventas';
+import InformacionV from 'pages/sale/InformacionV';
+import BuscarV from 'pages/sale/BuscarV';
+import ActualizarV from 'pages/sale/ActualizarV';
 import PrivateLayout from 'layouts/PrivateLayout';
 import InternLayout from 'layouts/InternLayout';
 import AuthLayout from 'layouts/AuthLayout';
@@ -40,11 +42,17 @@ function App() {
               </Switch>
             </PrivateLayout>
           </Route>
-          <Route path={['/Ventas','/Productos','/Usuarios','/Actualizar']}>
+          <Route path={['/ActualizarV','/InformacionV','/BuscarV','/Productos','/Usuarios','/Actualizar']}>
             <InternLayout>
               <Switch>
-                <Route path="/Ventas">
-                  <Ventas/>
+              <Route path="/ActualizarV">
+                  <ActualizarV/>
+                </Route>
+              <Route path="/InformacionV">
+                  <InformacionV/>
+                </Route>
+                <Route path="/BuscarV">
+                  <BuscarV/>
                 </Route>
                 <Route path="/Productos">
                   <Productos/>
