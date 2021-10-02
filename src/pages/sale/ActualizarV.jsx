@@ -4,13 +4,12 @@ import { ToastContainer, toast } from "react-toastify";
 
 
 const ActualizarV = () => {
-    toast.success("Venta Actualizada")
     return (
         <div className='flex flex-col items-center justify-center'>
             <h2 className='text-2xl font-extrabold text-gray-800'>
-            Actualizar información
+                Actualizar información
             </h2>
-            <form className='mt-8 max-w-md flex flex-col '>
+            <form onSubmit={(e) => { e.preventDefault(); toast.success("Venta Actualizada") }} className='mt-8 max-w-md flex flex-col '>
                 <label className='font-bold flex flex-col  max-w-md' >
                     Nombre
                     <input
@@ -52,13 +51,13 @@ const ActualizarV = () => {
                 <button
                     type='submit'
                     className='font-bold bg-gray-50 border  border-gray-600 p-2 rounded-xl m-2 '
-                 >
-                    Actualizar 
+                >
+                    Actualizar
                 </button>
             </form>
-            /<ToastContainer position="bottom-center" autoClose={3000} />
-        </div>    
-      );
-    };
+            / <ToastContainer position="bottom-center" autoClose={3000} />
+        </div >
+    );
+};
 
 export default ActualizarV

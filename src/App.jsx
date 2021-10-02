@@ -13,7 +13,7 @@ import PrivateLayout from 'layouts/PrivateLayout';
 import InternLayout from 'layouts/InternLayout';
 import AuthLayout from 'layouts/AuthLayout';
 import BackLayout from 'layouts/BackLayout';
-import{
+import {
   BrowserRouter as Router,
   Switch,
   Route,
@@ -26,54 +26,46 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path={['/Index']}>
-            <Layout>
-              <Switch>
-                <Route path='/Index'>
-                  <Index/>
-                </Route>
-              </Switch>
-            </Layout>
-          </Route>
           <Route path={['/Menu']}>
             <PrivateLayout>
               <Switch>
                 <Route path="/Menu">
-                  <Menu/>
+                  <Menu />
                 </Route>
               </Switch>
             </PrivateLayout>
           </Route>
-          <Route path={['/Productos','/Usuarios','/Actualizar','/Ventas']}>
+          <Route path={['/Productos', '/Usuarios', '/Ventas']}>
             <InternLayout>
               <Switch>
                 <Route path="/Productos">
-                  <Productos/>
+                  <Productos />
                 </Route>
                 <Route path="/Usuarios">
-                  <Usuarios/>
+                  <Usuarios />
                 </Route>
-                <Route path="/Actualizar">
-                  <Actualizar/>
-                </Route>
+
                 <Route path="/Ventas">
-                  <Ventas/>
+                  <Ventas />
                 </Route>
               </Switch>
             </InternLayout>
           </Route>
-          <Route path={['/ActualizarV','/InformacionV','/BuscarV']}>
+          <Route path={['/ActualizarV', '/InformacionV', '/BuscarV', '/Actualizar']}>
             <BackLayout>
               <Switch>
+                <Route path="/Actualizar" component={<Actualizar/>}>
+                  <Route path="/Actualizar/" />
+                </Route>
                 <Route path="/ActualizarV">
-                  <ActualizarV/>
-                  </Route>
+                  <ActualizarV />
+                </Route>
                 <Route path="/InformacionV">
-                  <InformacionV/>
-                  </Route>
+                  <InformacionV />
+                </Route>
                 <Route path="/BuscarV">
-                  <BuscarV/>
-                  </Route>
+                  <BuscarV />
+                </Route>
               </Switch>
             </BackLayout>
           </Route>
@@ -81,14 +73,23 @@ function App() {
             <AuthLayout>
               <Switch>
                 <Route path="/Login">
-                  <Login/>
+                  <Login />
                 </Route>
               </Switch>
             </AuthLayout>
           </Route>
+          <Route path={['/']}>
+            <Layout>
+              <Switch>
+                <Route path='/Index'>
+                  <Index />
+                </Route>
+              </Switch>
+            </Layout>
+          </Route>
         </Switch>
       </Router>
-    </div>  
+    </div>
   );
 }
 export default App;
