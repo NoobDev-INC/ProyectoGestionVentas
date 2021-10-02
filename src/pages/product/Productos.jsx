@@ -190,6 +190,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
           Guardar Producto
         </button>
       </form>
+
     </div>
   );
 };
