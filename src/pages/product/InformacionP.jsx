@@ -9,13 +9,13 @@ const InformacionP = () => {
         <label className='flex flex-col' htmlFor='nombre'>
           Nombre del producto
         </label>
-        <label className='flex flex-col' htmlFor='nombre'>
+        <label className='flex flex-col' htmlFor='ID'>
           ID del producto
         </label>
-        <label className='flex flex-col' htmlFor='nombre'>
+        <label className='flex flex-col' htmlFor='marca'>
           Marca del producto
         </label>
-        <label className='flex flex-col' htmlFor='nombre'>
+        <label className='flex flex-col' htmlFor='precio'>
           Precio del producto
         </label>
       </form>
