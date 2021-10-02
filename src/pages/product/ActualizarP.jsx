@@ -1,4 +1,8 @@
+import { ToastContainer, toast } from 'react-toastify';
+
 const ActualizarP = () => {
+    toast.success('Producto actualizado con éxito');
+    
     return (
         <div className='flex flex-col items-center justify-center'>
             <h2 className = 'text 2xl font-extrabold text-gray-800'> Página para actualizar información del producto</h2>
@@ -26,10 +30,10 @@ const ActualizarP = () => {
                 <button className='col-span-2  bg-green-400 p-2 rounded-full shadow-md hover:bg-green-600 text-white'>
                    Guardar
                 </button>
-                <spam className='text-green-500'>Producto actualizado con éxito</spam>
-                <spam className='text-red-500'>error actualizando producto </spam>
-
+                
             </form>
+            
+            /<ToastContainer position="bottom-center" autoClose={3000} />
             
         </div>
     );

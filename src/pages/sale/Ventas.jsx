@@ -1,3 +1,10 @@
+import React from 'react'
+import { ReactComponent as LogoAIV } from 'media/ActualizarV.svg'
+import { ReactComponent as LogoVIV } from 'media/InformacionV.svg'
+import { ReactComponent as LogoBIV } from 'media/BuscarV.svg'
+import { Link } from 'react-router-dom'
+import 'styles/styles.css'
+
 const ventas = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -42,12 +49,7 @@ const ventas = () => {
     </div>    
   );
 };
-import React from 'react'
-import { ReactComponent as LogoAIV } from 'media/ActualizarV.svg'
-import { ReactComponent as LogoVIV } from 'media/InformacionV.svg'
-import { ReactComponent as LogoBIV } from 'media/BuscarV.svg'
-import { Link } from 'react-router-dom'
-import 'styles/styles.css'
+
 
 const Ventas = () => {
     return (
