@@ -54,7 +54,7 @@ const Productos = () => {
           onClick={() => {
             setMostrarTabla(!mostrarTabla);
           }}
-          className={`text-white bg-${colorBoton}-500 p-5 rounded-full m-6 w-28 self-end`}
+          className={`text-white bg-${colorBoton}-500 border  border-gray-600 p-2 rounded-xl m-2`}
         >
           {textoBoton}
         </button>
