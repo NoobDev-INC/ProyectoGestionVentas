@@ -5,6 +5,9 @@ import Usuarios from 'pages/users/Usuarios';
 import Actualizar from 'pages/users/Actualizar';
 import Informacion from 'pages/users/Informacion';
 import Productos from 'pages/product/Productos';
+import BuscarP from 'pages/product/BuscarP';
+import InformacionP from 'pages/product/InformacionP'
+import ActualizarP from 'pages/product/ActualizarP'
 import Ventas from 'pages/sale/Ventas';
 import ActualizarV from 'pages/sale/ActualizarV';
 import InformacionV from 'pages/sale/InformacionV';
@@ -54,6 +57,40 @@ function App() {
               </Switch>
             </BackLayout>
           </Route>
+          <Route path={['/BuscarP']}>
+            <BackLayout>
+              <Switch>
+                
+                <Route path="/BuscarP">
+                  <BuscarP/>
+                  </Route>
+                
+              </Switch>
+            </BackLayout>
+          </Route>
+          <Route path={['/InformacionP']}>
+            <BackLayout>
+              <Switch>
+                
+                <Route path="/InformacionP">
+                  <InformacionP/>
+                  </Route>
+                
+              </Switch>
+            </BackLayout>
+          </Route>
+          <Route path={['/ActualizarP']}>
+            <BackLayout>
+              <Switch>
+                
+                <Route path="/ActualizarP">
+                  <ActualizarP/>
+                  </Route>
+                
+              </Switch>
+            </BackLayout>
+          </Route>
+          
           <Route path={['/Login']}>
             <AuthLayout>
               <Switch>
