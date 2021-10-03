@@ -9,7 +9,7 @@ const Usuarios = () => {
         <ul className="menu">
             <div className="menu-container">
                 <div className="items-file">
-                    <Link to= "/VerInformacion">
+                    <Link to= "/Informacion">
                         <section className="container-item">
                             <LogoVI/>
                             <p className="item-button">Ver información</p>

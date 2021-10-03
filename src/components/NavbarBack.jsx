@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import LogoBack from 'components/LogoBack'
-import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 
 const NavbarBack = ({ route }) => {
@@ -12,7 +11,7 @@ const NavbarBack = ({ route }) => {
         <div>
             <ul className="Navbar flex bg-blue-500  justify-between h-16">
                 <a onClick={() => location.goBack()}>
-                    <LogoBack />
+                    <LogoBack/>
                 </a>
                 <li className="m-2">Perfil</li>
             </ul>
