@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LogoBack from 'components/LogoBack'
-import { Link } from 'react-router-dom'
-const  NavbarBack = () => {
+import { useHistory } from 'react-router-dom'
+
+const NavbarBack = ({ route }) => {
+    const location = useHistory()
+    useEffect(() => {
+        console.log('LOCATION:', location)
+    }, [location])
     return (
         <div>
             <ul className="Navbar flex bg-blue-500  justify-between h-16">
-                <Link to= "/Ventas">
+                <a onClick={() => location.goBack()}>
                     <LogoBack/>
-                </Link>
+                </a>
                 <li className="m-2">Perfil</li>
             </ul>
-        </div>    
+        </div>
     )
 }
 export default NavbarBack

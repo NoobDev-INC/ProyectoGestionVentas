@@ -3,7 +3,7 @@ import React from 'react'
 
 const LogoBack = () => {
     return (
-        <img className="h-10 w-10" src={LogoB} alt="Back" />
+        <img className="h-10 w-10 cursor-pointer" src={LogoB} alt="Back"/>
     )
 }
 export default LogoBack
