@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 const productosBackend = [
   {
     nombre: 'Galaxy S10',
@@ -67,6 +68,13 @@ const Productos = () => {
         />
       )}
       <ToastContainer position='bottom-center' autoClose={5000} />
+      <Link to='/BuscarP'>
+        <button
+         class='text-white bg-blue-500 border border-gray-600 p-2 rounded-xl m-2'
+        >
+          Buscar producto
+        </button> 
+      </Link>
     </div>
   );
 };
