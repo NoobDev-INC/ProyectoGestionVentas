@@ -4,6 +4,7 @@ import { ReactComponent as LogoVIV } from 'media/InformacionV.svg'
 import { ReactComponent as LogoBIV } from 'media/BuscarV.svg'
 import { Link } from 'react-router-dom'
 import 'styles/styles.css'
+import { useEffect } from 'react/cjs/react.development'
 
 const ventas = () => {
   return (
@@ -52,6 +53,9 @@ const ventas = () => {
 
 
 const Ventas = () => {
+    useEffect(()=>{
+        console.log('Venmtas')
+    },[])
     return (
         <ul className="menu">
             <div className="menu-container">
