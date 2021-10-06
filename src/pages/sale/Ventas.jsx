@@ -1,86 +1,178 @@
 import React from 'react'
-import { ReactComponent as LogoAIV } from 'media/ActualizarV.svg'
-import { ReactComponent as LogoVIV } from 'media/InformacionV.svg'
-import { ReactComponent as LogoBIV } from 'media/BuscarV.svg'
-import { Link } from 'react-router-dom'
-import 'styles/styles.css'
-import { useEffect } from 'react/cjs/react.development'
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import { RiDeleteBin2Fill, RiPencilFill } from "react-icons/ri";
+import Collapse from '@mui/material/Collapse';
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
 
-const ventas = () => {
-  return (
-    <div className='flex flex-col items-center justify-center'>
-        <h2 className='text-2xl font-extrabold text-gray-800'>
-        Verificar información de las ventas
-        </h2>
-        <h3 className=' mt-8 text-center  font-extrabold text-gray-400'>
-            Puede realizar la busqueda mediante alguna opcion que se visualiza en pantalla
-        </h3>
-        <form className='mt-8 max-w-md'>
-            <label className='flex flex-col text-center' >
-                Identificador de venta
-                <input
-                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
-                    type='texto'
-                    placeholder='Identificador'
-                />
-            </label>
-            <label className='flex flex-col text-center' >
-                Documento de identidad
-                <input
-                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
-                    type='text'
-                    placeholder='Documento'
-                />
-            </label>
-            <label className='flex flex-col text-center' >
-                Nombre del cliente
-                <input
-                    className='bg-gray-50 border text-center border-gray-600 p-2 rounded-xl m-2'
-                    type='text'
-                    placeholder='Nombre'
-                />
-            </label>
-            <button
-                type='submit'
-                className=' bg-gray-50 border  border-gray-600 p-2 rounded-xl m-2'
-            >
-                Buscar informacion ventas
-            </button>
-        </form>
-    </div>    
-  );
-};
+import 'styles/Table.css'
 
+const ventas = [
+    {
+        id: 9411,
+        clienteId: 4865401,
+        cliente: 'Juan Perez',
+        total: 100000
+    },
+    {
+        id: 1524,
+        clienteId: 7864045,
+        cliente: 'José Solarte',
+        total: 500000
+    },
+    {
+        id: 2454,
+        clienteId: 4865401,
+        cliente: 'Juan perez',
+        total: 50000
+    },
+    {
+        id: 9411,
+        clienteId: 4865401,
+        cliente: 'Juan Perez',
+        total: 100000
+    },
+    {
+        id: 1524,
+        clienteId: 7864045,
+        cliente: 'José Solarte',
+        total: 500000
+    },
+    {
+        id: 2454,
+        clienteId: 4865401,
+        cliente: 'Juan perez',
+        total: 50000
+    }, {
+        id: 9411,
+        clienteId: 4865401,
+        cliente: 'Juan Perez',
+        total: 100000
+    },
+    {
+        id: 1524,
+        clienteId: 7864045,
+        cliente: 'José Solarte',
+        total: 500000
+    },
+    {
+        id: 2454,
+        clienteId: 4865401,
+        cliente: 'Juan perez',
+        total: 50000
+    }, {
+        id: 9411,
+        clienteId: 4865401,
+        cliente: 'Juan Perez',
+        total: 100000
+    },
+    {
+        id: 1524,
+        clienteId: 7864045,
+        cliente: 'José Solarte',
+        total: 500000
+    },
+    {
+        id: 2454,
+        clienteId: 4865401,
+        cliente: 'Juan perez',
+        total: 50000
+    }, {
+        id: 9411,
+        clienteId: 4865401,
+        cliente: 'Juan Perez',
+        total: 100000
+    },
+    {
+        id: 1524,
+        clienteId: 7864045,
+        cliente: 'José Solarte',
+        total: 500000
+    },
+    {
+        id: 2454,
+        clienteId: 4865401,
+        cliente: 'Juan perez',
+        total: 50000
+    }
 
-const Ventas = () => {
-    useEffect(()=>{
-        console.log('Venmtas')
-    },[])
+];
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+        fontSize: 18,
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 100,
+        maxHeight: 100,
+    },
+}));
+
+const Ventas = (props) => {
+    const [open, setOpen] = React.useState(false);
+    const [element, setElement] = React.useState(false);
     return (
-        <ul className="menu">
-            <div className="menu-container">
-                <div className="items-file">
-                    <Link to= "/InformacionV">
-                        <section className="container-item">
-                            <LogoVIV/>
-                            <p className="item-button">Ver información</p>
-                        </section>
-                    </Link>
-                    <Link to= "/ActualizarV">
-                        <section className="container-item">
-                            <LogoAIV/>
-                            <p className="item-button">Actualizar ventas</p>
-                        </section>
-                    </Link>
-                    <Link to= "/BuscarV">
-                        <section className="container-item">
-                            <LogoBIV/>
-                            <p className="item-button">Buscar información</p>
-                        </section>
-                    </Link>
-                </div>
-            </div>
-        </ul >
+        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
+            <Paper elevation={3}>
+                <TableContainer style={{ maxHeight: 500 }} component={Paper}>
+                    <Table stickyHeader sx={{ minWidth: 1000 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell align="center"></StyledTableCell>
+                                <StyledTableCell align="center">Id de venta</StyledTableCell>
+                                <StyledTableCell align="center">Total</StyledTableCell>
+                                <StyledTableCell align="center">Id cliente</StyledTableCell>
+                                <StyledTableCell align="center">Cliente</StyledTableCell>
+                                <StyledTableCell align="center"></StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {ventas.map((venta, index) => (
+                                <>
+                                    <TableRow
+                                        key={venta.id}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell>
+                                            <div onClick={() => { setOpen(!open); setElement(index) }}>
+                                                {open ? <MdExpandLess /> : <MdExpandMore />}
+                                            </div>
+                                        </TableCell>
+                                        <TableCell align="center" component="th" scope="row">
+                                            {venta.id}
+                                        </TableCell>
+                                        <TableCell align="center">{venta.total}</TableCell>
+                                        <TableCell align="center">{venta.clienteId}</TableCell>
+                                        <TableCell align="center">{venta.cliente}</TableCell>
+                                        <TableCell align="center">
+                                            <div className="table-container-buttons">
+                                                <a><RiPencilFill color="#267a31" size="1.2rem" /></a>
+                                                <a><RiDeleteBin2Fill color="#943232" size="1.2rem" /></a>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                    <TableRow>
+                                        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                                            <Collapse in={open && element === index} timeout="auto" unmountOnExit>
+                                                Test
+                                            </Collapse>
+                                        </TableCell>
+                                    </TableRow>
+                                </>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Paper>
+        </div>
     )
 }
 

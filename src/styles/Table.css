@@ -1,0 +1,11 @@
+.table-container-buttons {
+    display: flex;
+}
+
+.table-container-buttons a {
+    padding: 0 5px 0 5px
+}
+
+.table-container-buttons a:hover {
+    cursor: pointer;
+}

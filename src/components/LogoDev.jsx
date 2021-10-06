@@ -1,9 +1,12 @@
 import Logo from 'media/LogoDev.png'
 import React from 'react'
+import 'styles/Logo.css'
 
 const LogoDev = () => {
     return (
-        <img className='h-20 w-70' src={Logo} alt='Logo'/>
+        <div className="container-logo">
+            <img src={Logo} alt='Logo' />
+        </div>
     )
 }
 

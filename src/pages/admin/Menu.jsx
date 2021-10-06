@@ -11,26 +11,26 @@ const menu = () => {
         <ul className="menu">
             <div className="menu-container">
                 <div className="items-file">
-                    <Link to= "/Ventas">
+                    <Link to= "/menu/ventas">
                         <section className="container-item">
                             <LogoV/>
                             <p className="item-button">Ventas</p>
                         </section>
                     </Link>
-                    <Link to= "/Productos">
+                    <Link to= "/menu/productos">
                         <section className="container-item">
                             <LogoP/>
                             <p className="item-button">Productos</p>
                         </section>
                     </Link>
-                    <Link to="/Usuarios">
+                    <Link to="/menu/usuarios">
                         <section className="container-item">
                             <LogoU/>
                             <p className="item-button">Usuarios</p>
                         </section>
                     </Link>
                 </div>
-                <div className="items-file">
+                {/* <div className="items-file">
                     <section className="container-item">
                         <LogoB />
                         <p className="item-button">Proximamente...</p>
@@ -43,7 +43,7 @@ const menu = () => {
                         <LogoB />
                         <p className="item-button">Proximamente...</p>
                     </section>
-                </div>
+                </div> */}
             </div>
         </ul >
     )
