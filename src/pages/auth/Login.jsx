@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
-    <div class="bg-gray-100 flex justify-center items-center">
+     <div style={{width:'100%', display:'flex', justifyContent:'center', alignItems:'center', height:'100%'}}>
+    <div class="bg-gray-100 " style={{width:'35%'}}>
     <form
        action=""
        class="border border-gray-200 shadow-xs mx-auto rounded-lg p-10 bg-white text-center space-y-6 flex-grow"
@@ -72,6 +73,7 @@ const Login = () => {
           /></a>
        </div>
     </form>
+ </div>
  </div>
  )
 };
