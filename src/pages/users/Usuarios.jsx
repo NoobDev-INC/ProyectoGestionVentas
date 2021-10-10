@@ -8,40 +8,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 import { RiDeleteBin2Fill, RiPencilFill } from "react-icons/ri";
-import Collapse from '@mui/material/Collapse';
-import Box from '@mui/material/Box';
-import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import TextField from '@mui/material/TextField';
 import { BsCheckCircleFill, BsXCircleFill, BsPlus } from "react-icons/bs";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import 'styles/Table.css'
+import Axios from 'axios'
+import { useEffect } from 'react/cjs/react.development';
 
-
-const usuarios = [
-    {
-        rol: 'vendedor',
-        nombre: 'Juan perez',
-        id: 45,
-        estado: 'activo'
-
-    },
-    {
-        rol: 'vendedor',
-        nombre: 'Juan perez',
-        id: 12,
-        estado: 'activo'
-
-    },
-
-];
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -60,6 +38,20 @@ const Usuarios = (props) => {
     const [itemEdit, setItemEdit] = React.useState({ index: -1, estado: '', rol: '' });
     const [newItem, setNewItem] = React.useState([]);
     const [openDialog, setOpenDialog] = React.useState(false);
+    const [usuarios, setUsuarios] = React.useState([])
+    const [idDeleteUser, setIdDeleteUser] = React.useState(0)
+    useEffect(() => {
+        getUsers()
+    }, [])
+
+    const getUsers = async () => {
+        try {
+            const user = await Axios.get('http://localhost:5000/usuarios')
+            setUsuarios(user.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handlerOpen = (index) => {
         setOpen({ index: index, open: true })
@@ -71,22 +63,62 @@ const Usuarios = (props) => {
         setItemEdit({ index: index, estado: item.estado, rol: item.rol })
     }
     const updateItem = (e) => {
-        console.log(e)
         setItemEdit({ ...itemEdit, [e.target.name]: e.target.value })
-
     }
     const cancelEdit = () => {
-        setItemEdit({ index: -1, cedula: 0, cliente: '' })
+        setItemEdit({ index: -1, estado: '', rol: '' })
     }
     const addNewItem = () => {
-        setNewItem([{ id: '', total: '', cedula: '', cliente: '' }])
+        setNewItem([{ nombre: '', rol: '', estado: '' }])
     }
     const handlerNewItem = (e) => {
-        setNewItem([{ ...newItem, [e.target.name]: e.target.value }])
+        setNewItem([{ ...newItem[0], [e.target.name]: e.target.value }])
     }
-    const handlerOpenDialog = (value) => {
+    const handlerOpenDialog = (value, id = 0) => {
         setOpenDialog(value)
+        setIdDeleteUser(id)
     }
+
+    const addedUser = async () => {
+        try {
+            const user = await Axios.post('http://localhost:5000/usuarios', newItem[0])
+
+            if (user.status === 200) {
+                setNewItem([])
+                getUsers()
+
+            }
+        } catch (error) {
+            setNewItem([])
+        }
+
+    }
+    const deleteUser = async () => {
+        try {
+            const user = await Axios.delete('http://localhost:5000/usuarios/' + idDeleteUser)
+            if (user.status === 200) {
+                setOpenDialog(false)
+                getUsers()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const updateUser = async (id) => {
+        try {
+            const user = await Axios.patch('http://localhost:5000/usuarios/' + id, {
+                rol: itemEdit.rol,
+                estado: itemEdit.estado
+            })
+            if (user.status === 200) {
+                getUsers()
+                setItemEdit({ index: -1, estado: '', rol: '' })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
             <Paper elevation={3}>
@@ -109,19 +141,19 @@ const Usuarios = (props) => {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].id} name="id" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].total} name="total" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cedula} name="cedula" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cliente} name="cliente" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="_id" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].rol} name="rol" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].nombre} name="nombre" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].estado} name="estado" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center">
                                         <div className="table-container-buttons">
-                                            <a ><BsCheckCircleFill color="#267a31" size="1.2rem" /></a>
-                                            <a onClick={() => { setNewItem([]) }}><BsXCircleFill color="#943232" size="1.2rem" /></a>
+                                            <a ><BsCheckCircleFill onClick={() => { addedUser() }} color="#267a31" size="1.2rem" /></a>
+                                            <a onClick={() => { setNewItem([]); }}><BsXCircleFill color="#943232" size="1.2rem" /></a>
                                         </div>
                                     </TableCell>
                                 </TableRow>
                             </>}
-                            {usuarios.map((usuario, index) => index === itemEdit.index ? rowUpdate(itemEdit, usuario, updateItem, cancelEdit) : normalRow(usuario, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
+                            {usuarios.map((usuario, index) => index === itemEdit.index ? rowUpdate(itemEdit, usuario, updateItem, cancelEdit, updateUser) : normalRow(usuario, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
 
                         </TableBody>
                     </Table>
@@ -138,7 +170,7 @@ const Usuarios = (props) => {
 
                 <DialogActions>
                     <Button onClick={() => setOpenDialog(false)}>Cancelar</Button>
-                    <Button onClick={() => setOpenDialog(false)} autoFocus>
+                    <Button onClick={() => deleteUser()} autoFocus>
                         Aceptar
                     </Button>
                 </DialogActions>
@@ -147,7 +179,7 @@ const Usuarios = (props) => {
     )
 }
 
-const rowUpdate = (itemEdit, usuario, updateItem, cancelEdit) => {
+const rowUpdate = (itemEdit, usuario, updateItem, cancelEdit, updateUser) => {
     return (
         <>
             <TableRow
@@ -157,7 +189,7 @@ const rowUpdate = (itemEdit, usuario, updateItem, cancelEdit) => {
 
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
-                    {usuario.id}
+                    {usuario._id}
                 </TableCell>
                 <TableCell align="center">
                     <Select
@@ -182,7 +214,7 @@ const rowUpdate = (itemEdit, usuario, updateItem, cancelEdit) => {
                 </Select></TableCell>
                 <TableCell align="center">
                     <div className="table-container-buttons">
-                        <a ><BsCheckCircleFill color="#267a31" size="1.2rem" /></a>
+                        <a ><BsCheckCircleFill onClick={() => { updateUser(usuario._id) }} color="#267a31" size="1.2rem" /></a>
                         <a onClick={cancelEdit}><BsXCircleFill color="#943232" size="1.2rem" /></a>
                     </div>
                 </TableCell>
@@ -194,12 +226,12 @@ const normalRow = (usuario, index, open, handlerOpen, handlerClose, handlerUpdat
     return (
         <>
             <TableRow
-                key={usuario.id}
+                key={usuario._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
                 <TableCell></TableCell>
                 <TableCell align="center" component="th" scope="row">
-                    {usuario.id}
+                    {usuario._id}
                 </TableCell>
                 <TableCell align="center">{usuario.rol}</TableCell>
                 <TableCell align="center">{usuario.nombre}</TableCell>
@@ -207,7 +239,7 @@ const normalRow = (usuario, index, open, handlerOpen, handlerClose, handlerUpdat
                 <TableCell align="center">
                     <div className="table-container-buttons">
                         <a onClick={() => handlerUpdate(index, usuario)}><RiPencilFill color="#267a31" size="1.2rem" /></a>
-                        <a onClick={() => handlerOpenDialog(true)}><RiDeleteBin2Fill color="#943232" size="1.2rem" /></a>
+                        <a onClick={() => handlerOpenDialog(true, usuario._id)}><RiDeleteBin2Fill color="#943232" size="1.2rem" /></a>
                     </div>
                 </TableCell>
             </TableRow>
