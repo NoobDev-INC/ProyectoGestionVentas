@@ -56,7 +56,7 @@ const Productos = () => {
       ) : (
         <FormularioCreacionProductos
           setMostrarTabla={setMostrarTabla}
-          listaProductos={vehiculos}
+          listaProductos={productos}
           setProductos={setProductos}
         />
       )}
@@ -306,7 +306,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
 
     const options = {
       method: 'POST',
-      url: 'http://localhost:5000/productos/nuevo',
+      url: 'http://localhost:5000/menu/productos/nuevo',
       headers: { 'Content-Type': 'application/json' },
       data: { name: nuevoProducto.name, brand: nuevoProducto.brand, id: nuevoProducto.id, price: nuevoProducto.brand },
     };
