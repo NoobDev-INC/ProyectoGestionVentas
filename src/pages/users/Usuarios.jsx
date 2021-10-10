@@ -19,6 +19,7 @@ import Select from '@mui/material/Select';
 import 'styles/Table.css'
 import Axios from 'axios'
 import { useEffect } from 'react/cjs/react.development';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -40,6 +41,11 @@ const Usuarios = (props) => {
     const [openDialog, setOpenDialog] = React.useState(false);
     const [usuarios, setUsuarios] = React.useState([])
     const [idDeleteUser, setIdDeleteUser] = React.useState(0)
+
+    const notifyAdd = () => toast.success("Usuario agregado");
+    const notifyDelete = () => toast.success("Usuario eliminado");
+    const notifyUpdate = () => toast.success("Usuario Actualizado");
+
     useEffect(() => {
         getUsers()
     }, [])
@@ -86,6 +92,7 @@ const Usuarios = (props) => {
             if (user.status === 200) {
                 setNewItem([])
                 getUsers()
+                notifyAdd()
 
             }
         } catch (error) {
@@ -99,6 +106,7 @@ const Usuarios = (props) => {
             if (user.status === 200) {
                 setOpenDialog(false)
                 getUsers()
+                notifyDelete()
             }
         } catch (error) {
             console.log(error)
@@ -113,6 +121,7 @@ const Usuarios = (props) => {
             if (user.status === 200) {
                 getUsers()
                 setItemEdit({ index: -1, estado: '', rol: '' })
+                notifyUpdate()
             }
         } catch (error) {
             console.log(error)
@@ -175,6 +184,7 @@ const Usuarios = (props) => {
                     </Button>
                 </DialogActions>
             </Dialog>
+            <ToastContainer position="bottom-right" />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -16,117 +16,10 @@ import { BsCheckCircleFill, BsXCircleFill, BsPlus } from "react-icons/bs";
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Axios from 'axios'
 import 'styles/Table.css'
-
-
-const ventas = [
-    {
-        id: 9411,
-        clienteId: 4865401,
-        cliente: 'Juan Perez',
-        total: 100000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 1524,
-        clienteId: 7864045,
-        cliente: 'José Solarte',
-        total: 500000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 2454,
-        clienteId: 4865401,
-        cliente: 'Juan perez',
-        total: 50000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 9411,
-        clienteId: 4865401,
-        cliente: 'Juan Perez',
-        total: 100000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 1524,
-        clienteId: 7864045,
-        cliente: 'José Solarte',
-        total: 500000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 2454,
-        clienteId: 4865401,
-        cliente: 'Juan perez',
-        total: 50000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    }, {
-        id: 9411,
-        clienteId: 4865401,
-        cliente: 'Juan Perez',
-        total: 100000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 1524,
-        clienteId: 7864045,
-        cliente: 'José Solarte',
-        total: 500000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 2454,
-        clienteId: 4865401,
-        cliente: 'Juan perez',
-        total: 50000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    }, {
-        id: 9411,
-        clienteId: 4865401,
-        cliente: 'Juan Perez',
-        total: 100000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 1524,
-        clienteId: 7864045,
-        cliente: 'José Solarte',
-        total: 500000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 2454,
-        clienteId: 4865401,
-        cliente: 'Juan perez',
-        total: 50000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    }, {
-        id: 9411,
-        clienteId: 4865401,
-        cliente: 'Juan Perez',
-        total: 100000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 1524,
-        clienteId: 7864045,
-        cliente: 'José Solarte',
-        total: 500000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    },
-    {
-        id: 2454,
-        clienteId: 4865401,
-        cliente: 'Juan perez',
-        total: 50000,
-        detalles: [{ id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }, { id: 1, nombre: 'Test', cantidad: 4, precio: 500 }]
-    }
-
-];
+import { ToastContainer, toast } from 'react-toastify';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -145,6 +38,26 @@ const Ventas = (props) => {
     const [itemEdit, setItemEdit] = React.useState({ index: -1, cedula: 0, cliente: '' });
     const [newItem, setNewItem] = React.useState([]);
     const [openDialog, setOpenDialog] = React.useState(false);
+    const [ventas, setVentas] = useState([])
+    const [idDeleteVenta, setIdDeleteVenta] = React.useState(0)
+
+    const notifyAdd = () => toast.success("Venta agregada");
+    const notifyDelete = () => toast.success("Venta eliminada");
+    const notifyUpdate = () => toast.success("Venta Actualizada");
+
+    useEffect(() => {
+        getVentas()
+    }, [])
+
+    const getVentas = async () => {
+        try {
+            const venta = await Axios.get('http://localhost:5000/ventas')
+            setVentas(venta.data)
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const handlerOpen = (index) => {
         setOpen({ index: index, open: true })
@@ -153,7 +66,7 @@ const Ventas = (props) => {
         setOpen({ index: index, open: false })
     }
     const handlerUpdate = (index, item) => {
-        setItemEdit({ index: index, cedula: item.clienteId, cliente: item.cliente })
+        setItemEdit({ index: index, cedula: item.cedula, cliente: item.cliente })
     }
     const updateItem = (e) => {
         setItemEdit({ ...itemEdit, [e.target.name]: e.target.value })
@@ -163,15 +76,59 @@ const Ventas = (props) => {
         setItemEdit({ index: -1, cedula: 0, cliente: '' })
     }
     const addNewItem = () => {
-        setNewItem([{ id: '', total: '', cedula: '', cliente: '' }])
+        setNewItem([{ total: '', cedula: '', cliente: '' }])
     }
     const handlerNewItem = (e) => {
-        setNewItem([{ ...newItem, [e.target.name]: e.target.value }])
+        setNewItem([{ ...newItem[0], [e.target.name]: e.target.value }])
     }
-    const handlerOpenDialog = (value) => {
-        console.log('CLICK')
+    const handlerOpenDialog = (value, id = 0) => {
         setOpenDialog(value)
+        setIdDeleteVenta(id)
     }
+    const addedVenta = async () => {
+        try {
+            console.log(newItem[0])
+            const venta = await Axios.post('http://localhost:5000/ventas', { ...newItem[0], detalles: [] })
+
+            if (venta.status === 200) {
+                setNewItem([])
+                getVentas()
+                notifyAdd()
+
+            }
+        } catch (error) {
+            setNewItem([])
+        }
+
+    }
+    const deleteVenta = async () => {
+        try {
+            const venta = await Axios.delete('http://localhost:5000/ventas/' + idDeleteVenta)
+            if (venta.status === 200) {
+                setOpenDialog(false)
+                getVentas()
+                notifyDelete()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const updateVenta = async (id) => {
+        try {
+            const venta = await Axios.patch('http://localhost:5000/ventas/' + id, {
+                cedula: itemEdit.cedula,
+                cliente: itemEdit.cliente
+            })
+            if (venta.status === 200) {
+                getVentas()
+                setItemEdit({ index: -1, estado: '', rol: '' })
+                notifyUpdate()
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
             <Paper elevation={3}>
@@ -194,19 +151,19 @@ const Ventas = (props) => {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].id} name="id" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="id" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].total} name="total" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cedula} name="cedula" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cliente} name="cliente" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center">
                                         <div className="table-container-buttons">
-                                            <a ><BsCheckCircleFill color="#267a31" size="1.2rem" /></a>
+                                            <a ><BsCheckCircleFill onClick={() => addedVenta()} color="#267a31" size="1.2rem" /></a>
                                             <a onClick={() => { setNewItem([]) }}><BsXCircleFill color="#943232" size="1.2rem" /></a>
                                         </div>
                                     </TableCell>
                                 </TableRow>
                             </>}
-                            {ventas.map((venta, index) => index === itemEdit.index ? rowUpdate(itemEdit, venta, updateItem, cancelEdit) : normalRow(venta, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
+                            {ventas.map((venta, index) => index === itemEdit.index ? rowUpdate(itemEdit, venta, updateItem, cancelEdit, updateVenta) : normalRow(venta, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
 
                         </TableBody>
                     </Table>
@@ -223,16 +180,17 @@ const Ventas = (props) => {
 
                 <DialogActions>
                     <Button onClick={() => setOpenDialog(false)}>Cancelar</Button>
-                    <Button onClick={() => setOpenDialog(false)} autoFocus>
+                    <Button onClick={() => deleteVenta()} autoFocus>
                         Aceptar
                     </Button>
                 </DialogActions>
             </Dialog>
+            <ToastContainer position="bottom-right" />
         </div>
     )
 }
 
-const rowUpdate = (itemEdit, venta, updateItem, cancelEdit) => {
+const rowUpdate = (itemEdit, venta, updateItem, cancelEdit, updateVenta) => {
 
     return (
         <>
@@ -243,14 +201,14 @@ const rowUpdate = (itemEdit, venta, updateItem, cancelEdit) => {
 
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
-                    {venta.id}
+                    {venta._id}
                 </TableCell>
                 <TableCell align="center">{venta.total}</TableCell>
                 <TableCell align="center"><TextField value={itemEdit.cedula} onChange={updateItem} name="cedula" id="standard-basic" label="Cedula" variant="standard" /></TableCell>
                 <TableCell align="center"><TextField value={itemEdit.cliente} onChange={updateItem} name="cliente" id="standard-basic" label="Cliente" variant="standard" /></TableCell>
                 <TableCell align="center">
                     <div className="table-container-buttons">
-                        <a ><BsCheckCircleFill color="#267a31" size="1.2rem" /></a>
+                        <a ><BsCheckCircleFill onClick={() => { updateVenta(venta._id) }} color="#267a31" size="1.2rem" /></a>
                         <a onClick={cancelEdit}><BsXCircleFill color="#943232" size="1.2rem" /></a>
                     </div>
                 </TableCell>
@@ -262,7 +220,7 @@ const normalRow = (venta, index, open, handlerOpen, handlerClose, handlerUpdate,
     return (
         <>
             <TableRow
-                key={venta.id}
+                key={venta._id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
                 <TableCell>
@@ -271,15 +229,15 @@ const normalRow = (venta, index, open, handlerOpen, handlerClose, handlerUpdate,
                     </div>
                 </TableCell>
                 <TableCell align="center" component="th" scope="row">
-                    {venta.id}
+                    {venta._id}
                 </TableCell>
                 <TableCell align="center">{venta.total}</TableCell>
-                <TableCell align="center">{venta.clienteId}</TableCell>
+                <TableCell align="center">{venta.cedula}</TableCell>
                 <TableCell align="center">{venta.cliente}</TableCell>
                 <TableCell align="center">
                     <div className="table-container-buttons">
                         <a onClick={() => handlerUpdate(index, venta)}><RiPencilFill color="#267a31" size="1.2rem" /></a>
-                        <a onClick={() => handlerOpenDialog(true)}><RiDeleteBin2Fill color="#943232" size="1.2rem" /></a>
+                        <a onClick={() => handlerOpenDialog(true, venta._id)}><RiDeleteBin2Fill color="#943232" size="1.2rem" /></a>
                     </div>
                 </TableCell>
             </TableRow>
