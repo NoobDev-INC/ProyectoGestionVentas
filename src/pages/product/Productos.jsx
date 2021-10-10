@@ -308,7 +308,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
       method: 'POST',
       url: 'http://localhost:5000/menu/productos/nuevo',
       headers: { 'Content-Type': 'application/json' },
-      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, id: nuevoProducto.id, price: nuevoProducto.brand },
+      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, id: nuevoProducto.id, price: nuevoProducto.price },
     };
 
     await axios
@@ -361,10 +361,10 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
             required
           />
         </label>
-        <label className='flex flex-col' htmlFor='precio'>
+        <label className='flex flex-col' htmlFor='price'>
           Precio del producto
           <input
-            name='precio'
+            name='price'
             className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
             type='number'
             min={500000}

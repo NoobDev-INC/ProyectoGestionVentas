@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const obtenerProductos = async (setProductos, setEjecutarConsulta) => {
-  const options = { method: 'GET', url: 'http://localhost:5000/menu/productos' };
+  const options = { method: 'get', url: 'http://localhost:5000/menu/productos' };
   await axios
     .request(options)
     .then(function (response) {
