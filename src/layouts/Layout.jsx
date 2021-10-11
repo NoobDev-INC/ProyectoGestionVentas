@@ -1,12 +1,12 @@
-import Header from 'components/Header'
 import Footer from 'components/Footer'
 import React from 'react'
 import 'styles/styles.css';
+import Navbar from 'components/Navbar';
 
 const Layout = ({children}) => {
     return (
         <div className = 'mainContainer'>
-            <Header/>
+            <Navbar/>
             <main>{children}</main>
             <Footer/>   
         </div>

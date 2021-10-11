@@ -1,30 +1,11 @@
-import Layout from 'layouts/Layout';
-import Index from 'pages';
-import loginPage from 'pages/login';
-import{
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom"
+import React from "react";
+import Routes from 'routes/Main'
 import 'styles/styles.css';
-
 
 function App() {
   return (
     <div className="App">
-      <Router>
-       <Layout>
-        <Switch>
-          <Route path='/login'>
-            <loginPage/>
-          </Route>
-          <Route path='/'>
-            <Index/>
-          </Route>
-        </Switch>
-       </Layout>
-      </Router>
+      <Routes />
     </div>
   );
 }

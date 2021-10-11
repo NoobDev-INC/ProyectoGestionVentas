@@ -1,0 +1,13 @@
+.container-navbar a:hover svg {
+    cursor: pointer;
+    fill: aqua;
+    color: aqua;
+}
+
+.navbar-go-back {
+    padding-left: 20px;
+}
+
+.navbar-user {
+    padding-right: 20px;
+}
