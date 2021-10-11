@@ -1,6 +1,6 @@
 {
   "name": "gestor-ventas",
-  "version": "0.1.0",
+  "version": "v1.22.15",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
@@ -17,6 +17,7 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.3",
+    "taco": "^1.6.0",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
