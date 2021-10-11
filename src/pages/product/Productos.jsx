@@ -90,10 +90,10 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
         <table className='tabla'>
           <thead>
             <tr>
-              <th>Nombre del productos</th>
-              <th>Marca del producto</th>
               <th>ID del producto</th>
-              <th>precio del producto</th>
+              <th>Nombre del producto</th>
+              <th>Marca del producto</th>
+              <th>Precio del producto</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -130,9 +130,10 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
   const [edit, setEdit] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [infoNuevoProducto, setInfoNuevoProducto] = useState({
+    
+    _id: producto._id,
     name: producto.name,
     brand: producto.brand,
-    id: producto.id,
     price: producto.price,
   });
 
@@ -142,7 +143,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
       method: 'PATCH',
       url: 'http://localhost:5000/menu/productos/editar',
       headers: { 'Content-Type': 'application/json' },
-      data: { ...infoNuevoProducto, id: producto._id },
+      data: { ...infoNuevoProducto },
     };
 
     await axios
@@ -185,6 +186,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
     <tr>
       {edit ? (
         <>
+          <td>{infoNuevoProducto._id}</td>
           <td>
             <input
               className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
@@ -207,7 +209,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
             <input
               className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
               type='text'
-              value={infoNuevoProducto.id}
+              value={infoNuevoProducto.ident}
               onChange={(e) =>
                 setInfoNuevoProducto({ ...infoNuevoProducto, model: e.target.value })
               }
@@ -226,9 +228,9 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
         </>
       ) : (
         <>
+          <td>{producto._id.slice(20)}</td>
           <td>{producto.name}</td>
           <td>{producto.brand}</td>
-          <td>{producto.id}</td>
           <td>{producto.price}</td>
         </>
       )}
@@ -308,7 +310,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
       method: 'POST',
       url: 'http://localhost:5000/menu/productos/nuevo',
       headers: { 'Content-Type': 'application/json' },
-      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, id: nuevoProducto.id, price: nuevoProducto.price },
+      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, ident: nuevoProducto.ident, price: nuevoProducto.price },
     };
 
     await axios
@@ -340,7 +342,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
           />
         </label>
         <label className='flex flex-col' htmlFor='marca'>
-          Nombre del producto
+          Marca del producto
           <input
             name='brand'
             className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
@@ -349,18 +351,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
             required
           />
         </label>
-        <label className='flex flex-col' htmlFor='id'>
-          ID del producto
-          <input
-            name='id'
-            className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
-            type='number'
-            min={1}
-            max={99999}
-            placeholder='1246'
-            required
-          />
-        </label>
+        
         <label className='flex flex-col' htmlFor='price'>
           Precio del producto
           <input
