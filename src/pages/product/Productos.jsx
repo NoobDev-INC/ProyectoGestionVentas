@@ -140,7 +140,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
     
     const options = {
       method: 'PATCH',
-      url: 'https://vast-waters-45728.herokuapp.com/vehicle/update/',
+      url: 'http://localhost:5000/menu/productos/editar',
       headers: { 'Content-Type': 'application/json' },
       data: { ...infoNuevoProducto, id: producto._id },
     };
@@ -162,7 +162,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
   const eliminarProducto = async () => {
     const options = {
       method: 'DELETE',
-      url: 'https://vast-waters-45728.herokuapp.com/vehicle/delete/',
+      url: 'http://localhost:5000/menu/productos/eliminar',
       headers: { 'Content-Type': 'application/json' },
       data: { id: producto._id },
     };
