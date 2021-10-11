@@ -116,7 +116,6 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
             <div className='bg-gray-400 m-2 shadow-xl flex flex-col p-2 rounded-xl'>
               <span>{el.name}</span>
               <span>{el.brand}</span>
-              <span>{el.id}</span>
               <span>{el.price}</span>
             </div>
           );
@@ -141,7 +140,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
     
     const options = {
       method: 'PATCH',
-      url: 'http://localhost:5000/menu/productos/editar',
+      url: `http://localhost:5000/menu/productos/${producto._id}/`,
       headers: { 'Content-Type': 'application/json' },
       data: { ...infoNuevoProducto },
     };
@@ -202,16 +201,6 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
               value={infoNuevoProducto.brand}
               onChange={(e) =>
                 setInfoNuevoProducto({ ...infoNuevoProducto, brand: e.target.value })
-              }
-            />
-          </td>
-          <td>
-            <input
-              className='bg-gray-50 border border-gray-600 p-2 rounded-lg m-2'
-              type='text'
-              value={infoNuevoProducto.ident}
-              onChange={(e) =>
-                setInfoNuevoProducto({ ...infoNuevoProducto, model: e.target.value })
               }
             />
           </td>
@@ -310,7 +299,7 @@ const FormularioCreacionProductos = ({ setMostrarTabla, listaProductos, setProdu
       method: 'POST',
       url: 'http://localhost:5000/menu/productos/nuevo',
       headers: { 'Content-Type': 'application/json' },
-      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, ident: nuevoProducto.ident, price: nuevoProducto.price },
+      data: { name: nuevoProducto.name, brand: nuevoProducto.brand, id: nuevoProducto._id, price: nuevoProducto.price },
     };
 
     await axios
