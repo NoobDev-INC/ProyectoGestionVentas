@@ -213,7 +213,7 @@ const FilaProducto = ({ producto, setEjecutarConsulta }) => {
               type='text'
               value={infoNuevoProducto.price}
               onChange={(e) =>
-                setInfoNuevoProducto({ ...infoNuevoProducto, model: e.target.value })
+                setInfoNuevoProducto({ ...infoNuevoProducto, price: e.target.value })
               }
             />
           </td>
