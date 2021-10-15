@@ -1,11 +1,32 @@
-.table-container-buttons {
-    display: flex;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tabla {
+  width: 100%;
+  margin: 10px;
+  overflow-y: scroll;
 }
 
-.table-container-buttons a {
-    padding: 0 5px 0 5px
+.tabla td,
+.tabla th {
+  padding: 8px;
+  border: 1px solid #ddd;
 }
 
-.table-container-buttons a:hover {
-    cursor: pointer;
+.tabla th {
+  background-color: #099ec4;
+  color: white;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}
+
+.tabla tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabla tr:hover {
+  background-color: #ddd;
+  cursor: pointer;
 }

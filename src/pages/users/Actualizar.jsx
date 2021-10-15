@@ -12,7 +12,7 @@ const Actualizar = () => {
                     <input type="text" placeholder='Estado'/>
                     <input type="text" placeholder='Rol'/>
                 </div>
-                <button type="submit" className="col-span-2 bg-blue-500 p-2 rounded-full shadow-md hover:bg-blue-600 text-white">Guardar Venta</button>
+                <button type="submit" className="col-span-2 bg-blue-500 p-2 rounded-full shadow-md hover:bg-blue-600 text-white">Actualizar</button>
                 <ToastContainer position="bottom-center" autoClose={3000} />
             </form>
            
