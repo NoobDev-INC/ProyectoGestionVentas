@@ -40,6 +40,7 @@ const Ventas = (props) => {
     const [openDialog, setOpenDialog] = React.useState(false);
     const [ventas, setVentas] = useState([])
     const [idDeleteVenta, setIdDeleteVenta] = React.useState(0)
+    const [search, setSearch] = React.useState('')
 
     const notifyAdd = () => toast.success("Venta agregada");
     const notifyDelete = () => toast.success("Venta eliminada");
@@ -129,63 +130,72 @@ const Ventas = (props) => {
         }
     }
 
+    const handleChange = (e) => {
+        setSearch(e.target.value)
+    }
+
     return (
-        <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '5%' }}>
-            <Paper elevation={3}>
-                <TableContainer style={{ maxHeight: 500 }} component={Paper}>
-                    <Table stickyHeader sx={{ minWidth: 1000 }} aria-label="collapsible table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell align="center"><a onClick={addNewItem}><BsPlus color="#267a31" size="1.2rem" /></a></StyledTableCell>
-                                <StyledTableCell align="center">Id de venta</StyledTableCell>
-                                <StyledTableCell align="center">Total</StyledTableCell>
-                                <StyledTableCell align="center">Cédula</StyledTableCell>
-                                <StyledTableCell align="center">Cliente</StyledTableCell>
-                                <StyledTableCell align="center"></StyledTableCell>
+        <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ width: '1000px', display: 'flex' }}>
+                <TextField name="search" onChange={handleChange} placeholder="Buscar..." />
+            </div>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '20px' }}>
+                <Paper elevation={3}>
+                    <TableContainer style={{ maxHeight: 500 }} component={Paper}>
+                        <Table stickyHeader sx={{ minWidth: 1000 }} aria-label="collapsible table">
+                            <TableHead>
+                                <TableRow>
+                                    <StyledTableCell align="center"><a onClick={addNewItem}><BsPlus color="#267a31" size="1.2rem" /></a></StyledTableCell>
+                                    <StyledTableCell align="center">Id de venta</StyledTableCell>
+                                    <StyledTableCell align="center">Total</StyledTableCell>
+                                    <StyledTableCell align="center">Cédula</StyledTableCell>
+                                    <StyledTableCell align="center">Cliente</StyledTableCell>
+                                    <StyledTableCell align="center"></StyledTableCell>
 
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {newItem.length >= 1 && <>
-                                <TableRow
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                    <TableCell></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="id" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].total} name="total" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cedula} name="cedula" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cliente} name="cliente" id="standard-basic" variant="standard" /></TableCell>
-                                    <TableCell align="center">
-                                        <div className="table-container-buttons">
-                                            <a ><BsCheckCircleFill onClick={() => addedVenta()} color="#267a31" size="1.2rem" /></a>
-                                            <a onClick={() => { setNewItem([]) }}><BsXCircleFill color="#943232" size="1.2rem" /></a>
-                                        </div>
-                                    </TableCell>
                                 </TableRow>
-                            </>}
-                            {ventas.map((venta, index) => index === itemEdit.index ? rowUpdate(itemEdit, venta, updateItem, cancelEdit, updateVenta) : normalRow(venta, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
+                            </TableHead>
+                            <TableBody>
+                                {newItem.length >= 1 && <>
+                                    <TableRow
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell></TableCell>
+                                        <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="id" id="standard-basic" variant="standard" /></TableCell>
+                                        <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].total} name="total" id="standard-basic" variant="standard" /></TableCell>
+                                        <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cedula} name="cedula" id="standard-basic" variant="standard" /></TableCell>
+                                        <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cliente} name="cliente" id="standard-basic" variant="standard" /></TableCell>
+                                        <TableCell align="center">
+                                            <div className="table-container-buttons">
+                                                <a ><BsCheckCircleFill onClick={() => addedVenta()} color="#267a31" size="1.2rem" /></a>
+                                                <a onClick={() => { setNewItem([]) }}><BsXCircleFill color="#943232" size="1.2rem" /></a>
+                                            </div>
+                                        </TableCell>
+                                    </TableRow>
+                                </>}
+                                {ventas.filter((item, index) => String(item._id).includes(String(search)) || String(item.cedula).includes(String(search)) || String(item.cliente).includes(String(search))).map((venta, index) => index === itemEdit.index ? rowUpdate(itemEdit, venta, updateItem, cancelEdit, updateVenta) : normalRow(venta, index, open, handlerOpen, handlerClose, handlerUpdate, handlerOpenDialog))}
 
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Paper>
-            <Dialog
-                open={openDialog}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogTitle id="alert-dialog-title">
-                    {"¿Desea eliminar el elemento seleccionado?"}
-                </DialogTitle>
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Paper>
+                <Dialog
+                    open={openDialog}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                        {"¿Desea eliminar el elemento seleccionado?"}
+                    </DialogTitle>
 
-                <DialogActions>
-                    <Button onClick={() => setOpenDialog(false)}>Cancelar</Button>
-                    <Button onClick={() => deleteVenta()} autoFocus>
-                        Aceptar
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            <ToastContainer position="bottom-right" />
+                    <DialogActions>
+                        <Button onClick={() => setOpenDialog(false)}>Cancelar</Button>
+                        <Button onClick={() => deleteVenta()} autoFocus>
+                            Aceptar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <ToastContainer position="bottom-right" />
+            </div>
         </div>
     )
 }
