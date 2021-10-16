@@ -137,9 +137,9 @@ const Ventas = (props) => {
     return (
         <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <div style={{ width: '1000px', display: 'flex' }}>
-                <TextField name="search" onChange={handleChange} placeholder="Buscar..." />
+                <TextField name="search" onChange={handleChange} placeholder="Buscar:(ID, Cédula, Nombre)"/>
             </div>
-            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '20px' }}>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '18px' }}>
                 <Paper elevation={3}>
                     <TableContainer style={{ maxHeight: 500 }} component={Paper}>
                         <Table stickyHeader sx={{ minWidth: 1000 }} aria-label="collapsible table">
