@@ -2745,6 +2745,11 @@ async-limiter@~1.0.0:
   resolved "https://registry.npmjs.org/async-limiter/-/async-limiter-1.0.1.tgz"
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
+async@0.1.x:
+  version "0.1.22"
+  resolved "https://registry.yarnpkg.com/async/-/async-0.1.22.tgz#0fc1aaa088a0e3ef0ebe2d8831bab0dcf8845061"
+  integrity sha1-D8GqoIig4+8Ovi2IMbqw3PiEUGE=
+
 async@^2.6.2:
   version "2.6.3"
   resolved "https://registry.npmjs.org/async/-/async-2.6.3.tgz"
@@ -2994,10 +2999,20 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+basic@~0.0.1:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/basic/-/basic-0.0.3.tgz#d53c81a7c5b9851023dc0673f73227a5a9fae0e9"
+  integrity sha1-1TyBp8W5hRAj3AZz9zInpan64Ok=
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/batch/-/batch-0.6.1.tgz"
   integrity sha1-3DQxT05nkxgJP8dgJyUl+UvyXBY=
+
+batch@~0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/batch/-/batch-0.3.2.tgz#8f802c1358be2b33535f8808e0a23c9f0075733b"
+  integrity sha1-j4AsE1i+KzNTX4gI4KI8nwB1czs=
 
 bcrypt-pbkdf@^1.0.0:
   version "1.0.2"
@@ -3657,6 +3672,13 @@ commander@^6.0.0:
   resolved "https://registry.npmjs.org/commander/-/commander-6.2.1.tgz"
   integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
+commander@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-1.1.1.tgz#50d1651868ae60eccff0a2d9f34595376bc6b041"
+  integrity sha1-UNFlGGiuYOzP8KLZ80WVN2vGsEE=
+  dependencies:
+    keypress "0.1.x"
+
 common-tags@^1.8.0:
   version "1.8.0"
   resolved "https://registry.npmjs.org/common-tags/-/common-tags-1.8.0.tgz"
@@ -4221,6 +4243,11 @@ debug@^4.0.1, debug@^4.1.0, debug@^4.1.1:
   dependencies:
     ms "2.1.2"
 
+debug@~0.7.2, debug@~0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
+  integrity sha1-BuHqgILCyxTjmAbiLi9vdX+Srzk=
+
 decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
@@ -4675,6 +4702,11 @@ error-stack-parser@^2.0.6:
   integrity sha512-d51brTeqC+BHlwF0BhPtcYgF5nlzf9ZZ0ZIUQNZpc9ZB9qw5IJ2diTrBY9jlCJkTLITYPjmiX6OWCwH+fuyNgQ==
   dependencies:
     stackframe "^1.1.1"
+
+errs@0.1.x:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/errs/-/errs-0.1.1.tgz#d4493dcccf0848ed75ee4e3205f606058841baf2"
+  integrity sha1-1Ek9zM8ISO117k4yBfYGBYhBuvI=
 
 es-abstract@^1.18.0-next.1, es-abstract@^1.18.0-next.2:
   version "1.18.0-next.2"
@@ -5562,6 +5594,24 @@ getpass@^0.1.1:
   integrity sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo=
   dependencies:
     assert-plus "^1.0.0"
+
+getport@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/getport/-/getport-0.1.0.tgz#abddf3d5d1e77dd967ccfa2b036a0a1fb26fd7f7"
+  integrity sha1-q93z1dHnfdlnzPorA2oKH7Jv1/c=
+
+git-http-backend@~0.1.1:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/git-http-backend/-/git-http-backend-0.1.6.tgz#e890134d1128d7ab859ca67a1325fce281d389ce"
+  integrity sha1-6JATTREo16uFnKZ6EyX84oHTic4=
+  dependencies:
+    git-side-band-message "~0.0.3"
+    inherits "~2.0.1"
+
+git-side-band-message@~0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/git-side-band-message/-/git-side-band-message-0.0.3.tgz#b8a5348c2dcbf1949fd295c506014e26c3f26a46"
+  integrity sha1-uKU0jC3L8ZSf0pXFBgFOJsPyakY=
 
 glob-parent@^3.1.0:
   version "3.1.0"
@@ -7238,6 +7288,11 @@ jss@10.8.0, jss@^10.5.1:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
+keypress@0.1.x:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.1.0.tgz#4a3188d4291b66b4f65edb99f806aa9ae293592a"
+  integrity sha1-SjGI1CkbZrT2XtuZ+AaqmuKTWSo=
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz"
@@ -7761,10 +7816,27 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
+mkdirp@~0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.3.5.tgz#de3e5f8961c88c787ee1368df849ac4413eca8d7"
+  integrity sha1-3j5fiWHIjHh+4TaN+EmsRBPsqNc=
+
 modern-normalize@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npmjs.org/modern-normalize/-/modern-normalize-1.1.0.tgz"
   integrity sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==
+
+mongroup@~1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/mongroup/-/mongroup-1.2.0.tgz#4a3a803378ed35a4db73e8041c40d7f699cad1aa"
+  integrity sha1-SjqAM3jtNaTbc+gEHEDX9pnK0ao=
+  dependencies:
+    batch "~0.3.2"
+    commander "~1.1.1"
+    debug "~0.7.2"
+    mkdirp "~0.3.5"
+    ms "~0.6.1"
+    printf "~0.1.2"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -7792,6 +7864,11 @@ ms@2.1.2, ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
+
+ms@~0.6.1:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-0.6.2.tgz#d89c2124c6fdc1353d65a8b77bf1aac4b193708c"
+  integrity sha1-2JwhJMb9wTU9Zai3e/GqxLGTcIw=
 
 multicast-dns-service-types@^1.1.0:
   version "1.1.0"
@@ -7864,6 +7941,25 @@ next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/next-tick/-/next-tick-1.0.0.tgz"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
+
+nginx-conf@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/nginx-conf/-/nginx-conf-0.1.0.tgz#abf5116645f7f3fd87ad4c69cd3260389fc7700d"
+  integrity sha1-q/URZkX38/2HrUxpzTJgOJ/HcA0=
+
+nginx-reload@~0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/nginx-reload/-/nginx-reload-0.0.7.tgz#fcc6c2c8be7fdcf3c5a4465e31afcae6b02538b0"
+  integrity sha1-/MbCyL5/3PPFpEZeMa/K5rAlOLA=
+  dependencies:
+    procinfo "~0.1.4"
+
+nginx-vhosts@~0.0.2:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/nginx-vhosts/-/nginx-vhosts-0.0.8.tgz#65a498fe9ddcf8166edefe86af9d64ca2c737b2a"
+  integrity sha1-ZaSY/p3c+BZu3v6Gr51kyixzeyo=
+  dependencies:
+    nginx-reload "~0.0.7"
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -9331,6 +9427,11 @@ pretty-hrtime@^1.0.3:
   resolved "https://registry.npmjs.org/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz"
   integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
 
+printf@~0.1.2:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/printf/-/printf-0.1.3.tgz#27e935bae4f55db1fdc18368689e9561ce551226"
+  integrity sha1-J+k1uuT1XbH9wYNoaJ6VYc5VEiY=
+
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
@@ -9340,6 +9441,11 @@ process@^0.11.10:
   version "0.11.10"
   resolved "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
+
+procinfo@~0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/procinfo/-/procinfo-0.1.4.tgz#532019126114aee41b80997ef888a108319df50f"
+  integrity sha1-UyAZEmEUruQbgJl++IihCDGd9Q8=
 
 progress@^2.0.0:
   version "2.0.3"
@@ -9740,6 +9846,14 @@ react@^17.0.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+read-dir-files@~0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/read-dir-files/-/read-dir-files-0.1.1.tgz#d79ecfdf323ac0a4d4ac6e2293387e974ed21782"
+  integrity sha1-157P3zI6wKTUrG4ikzh+l07SF4I=
+  dependencies:
+    async "0.1.x"
+    errs "0.1.x"
 
 read-pkg-up@^2.0.0:
   version "2.0.0"
@@ -11011,6 +11125,22 @@ table@^6.0.4:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
 
+taco@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/taco/-/taco-1.6.0.tgz#61c72de1255e9799f381a6ab595c7e0432546010"
+  integrity sha1-Ycct4SVel5nzgaarWVx+BDJUYBA=
+  dependencies:
+    basic "~0.0.1"
+    debug "~0.7.4"
+    getport "~0.1.0"
+    git-http-backend "~0.1.1"
+    mkdirp "~0.3.5"
+    mongroup "~1.2.0"
+    nginx-conf "~0.1.0"
+    nginx-vhosts "~0.0.2"
+    read-dir-files "~0.1.1"
+    through "~2.3.4"
+
 "tailwindcss@npm:@tailwindcss/postcss7-compat":
   version "2.2.16"
   resolved "https://registry.npmjs.org/@tailwindcss/postcss7-compat/-/postcss7-compat-2.2.16.tgz"
@@ -11165,6 +11295,11 @@ through2@^2.0.0:
   dependencies:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
+
+through@~2.3.4:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
 thunky@^1.0.2:
   version "1.1.0"
