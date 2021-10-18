@@ -5,11 +5,13 @@ import 'styles/styles.css';
 
 const PrivateLayout = ({children}) => {
     return (
-        <div className = 'mainContainer'>
+        <PrivateRoute>
+            <div className = 'mainContainer'>
             <Header/>
             <main>{children}</main>
             <Footer/>   
         </div>
+        </PrivateRoute>
     )
 }
 
