@@ -9,7 +9,7 @@ function App() {
     <Auth0Provider
       domain="proyecto-ventas.us.auth0.com"
       clientId="ZbygeOmsoI68EwmJ79f8DA7A1tP4cl1V"
-      redirectUri={window.location.origin}
+      redirectUri='https://cryptic-citadel-08995.herokuapp.com/menu'
       audience='api-autenticacion-gestor-ventas'
     >
       <div className="App">
