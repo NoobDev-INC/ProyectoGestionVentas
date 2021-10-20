@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { MdGeneratingTokens } from 'react-icons/md';
 
-const baseURL = "https://frozen-beach-86139.herokuapp.com/"
+const baseURL = "https://frozen-beach-86139.herokuapp.com"
 
 export const obtenerProductos = async (successCallback, errorCallback) => {
   const options = { method: 'GET', url: `${baseURL}/productos/` };

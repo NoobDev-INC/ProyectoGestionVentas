@@ -52,7 +52,7 @@ const Ventas = (props) => {
 
     const getVentas = async () => {
         try {
-            const venta = await Axios.get('http://localhost:5000/ventas')
+            const venta = await Axios.get('https://frozen-beach-86139.herokuapp.com/ventas')
             setVentas(venta.data)
 
         } catch (error) {
@@ -89,7 +89,7 @@ const Ventas = (props) => {
     const addedVenta = async () => {
         try {
             console.log(newItem[0])
-            const venta = await Axios.post('http://localhost:5000/ventas', { ...newItem[0], detalles: [] })
+            const venta = await Axios.post('https://frozen-beach-86139.herokuapp.com/ventas', { ...newItem[0], detalles: [] })
 
             if (venta.status === 200) {
                 setNewItem([])
@@ -104,7 +104,7 @@ const Ventas = (props) => {
     }
     const deleteVenta = async () => {
         try {
-            const venta = await Axios.delete('http://localhost:5000/ventas/' + idDeleteVenta)
+            const venta = await Axios.delete('https://frozen-beach-86139.herokuapp.com/ventas' + idDeleteVenta)
             if (venta.status === 200) {
                 setOpenDialog(false)
                 getVentas()
@@ -116,7 +116,7 @@ const Ventas = (props) => {
     }
     const updateVenta = async (id) => {
         try {
-            const venta = await Axios.patch('http://localhost:5000/ventas/' + id, {
+            const venta = await Axios.patch('https://frozen-beach-86139.herokuapp.com/ventas' + id, {
                 cedula: itemEdit.cedula,
                 cliente: itemEdit.cliente
             })
