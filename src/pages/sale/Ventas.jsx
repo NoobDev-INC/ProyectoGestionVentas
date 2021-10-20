@@ -104,7 +104,7 @@ const Ventas = (props) => {
     }
     const deleteVenta = async () => {
         try {
-            const venta = await Axios.delete('https://frozen-beach-86139.herokuapp.com/ventas' + idDeleteVenta)
+            const venta = await Axios.delete('https://frozen-beach-86139.herokuapp.com/ventas/' + idDeleteVenta)
             if (venta.status === 200) {
                 setOpenDialog(false)
                 getVentas()
@@ -116,7 +116,7 @@ const Ventas = (props) => {
     }
     const updateVenta = async (id) => {
         try {
-            const venta = await Axios.patch('https://frozen-beach-86139.herokuapp.com/ventas' + id, {
+            const venta = await Axios.patch('https://frozen-beach-86139.herokuapp.com/ventas/' + id, {
                 cedula: itemEdit.cedula,
                 cliente: itemEdit.cliente
             })

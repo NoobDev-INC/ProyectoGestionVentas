@@ -102,7 +102,7 @@ const Usuarios = (props) => {
     }
     const deleteUser = async () => {
         try {
-            const user = await Axios.delete('https://frozen-beach-86139.herokuapp.com/usuarios' + idDeleteUser)
+            const user = await Axios.delete('https://frozen-beach-86139.herokuapp.com/usuarios/' + idDeleteUser)
             if (user.status === 200) {
                 setOpenDialog(false)
                 getUsers()
@@ -114,7 +114,7 @@ const Usuarios = (props) => {
     }
     const updateUser = async (id) => {
         try {
-            const user = await Axios.patch('https://frozen-beach-86139.herokuapp.com/usuarios' + id, {
+            const user = await Axios.patch('https://frozen-beach-86139.herokuapp.com/usuarios/' + id, {
                 rol: itemEdit.rol,
                 estado: itemEdit.estado
             })
