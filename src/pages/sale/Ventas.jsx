@@ -52,7 +52,7 @@ const Ventas = (props) => {
 
     const getVentas = async () => {
         try {
-            const venta = await Axios.get('https://frozen-beach-86139.herokuapp.com/ventas/')
+            const venta = await Axios.get('https://frozen-beach-86139.herokuapp.com/ventas')
             setVentas(venta.data)
 
         } catch (error) {
@@ -89,7 +89,7 @@ const Ventas = (props) => {
     const addedVenta = async () => {
         try {
             console.log(newItem[0])
-            const venta = await Axios.post('https://frozen-beach-86139.herokuapp.com/ventas/', { ...newItem[0], detalles: [] })
+            const venta = await Axios.post('https://frozen-beach-86139.herokuapp.com/ventas', { ...newItem[0], detalles: [] })
 
             if (venta.status === 200) {
                 setNewItem([])

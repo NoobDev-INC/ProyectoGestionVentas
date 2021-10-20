@@ -52,7 +52,7 @@ const Usuarios = (props) => {
 
     const getUsers = async () => {
         try {
-            const user = await Axios.get('https://frozen-beach-86139.herokuapp.com/usuarios/')
+            const user = await Axios.get('https://frozen-beach-86139.herokuapp.com/usuarios')
             setUsuarios(user.data)
         } catch (error) {
             console.log(error)
@@ -87,7 +87,7 @@ const Usuarios = (props) => {
 
     const addedUser = async () => {
         try {
-            const user = await Axios.post('https://frozen-beach-86139.herokuapp.com/usuarios/', newItem[0])
+            const user = await Axios.post('https://frozen-beach-86139.herokuapp.com/usuarios', newItem[0])
 
             if (user.status === 200) {
                 setNewItem([])
