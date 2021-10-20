@@ -46,9 +46,9 @@ const Usuarios = (props) => {
     const notifyDelete = () => toast.success("Usuario eliminado");
     const notifyUpdate = () => toast.success("Usuario Actualizado");
 
-    useEffect(() => {
+    /* useEffect(() => {
         getUsers()
-    }, [])
+    }, []) */
 
     const getUsers = async () => {
         try {
