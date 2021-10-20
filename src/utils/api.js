@@ -36,7 +36,7 @@ export const eliminarProducto = async (id, successCallback, errorCallback) => {
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
-
+/* 
 export const otenerDatosUsuario = async (successCallback, errorCallback) => {
   const options = {
     method: 'GET',
@@ -45,4 +45,4 @@ export const otenerDatosUsuario = async (successCallback, errorCallback) => {
     },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
-};
+}; */
