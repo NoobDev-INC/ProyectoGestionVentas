@@ -1,16 +1,21 @@
-import Header from 'components/Header';
-import Footer from 'components/Footer';
-import React from 'react';
-import 'styles/styles.css';
+import Header from "components/Header";
+import Footer from "components/Footer";
+import React, { useEffect } from "react";
+import "styles/styles.css";
 
-const PrivateLayout = ({children}) => {
-    return (
-        <div className = 'mainContainer'>
-            <Header/>
-            <main>{children}</main>
-            <Footer/>   
-        </div>
-    )
-}
+import { cleanup } from "@testing-library/react";
+import PrivateRoute from "components/privateRoute";
 
-export default PrivateLayout
+const PrivateLayout = ({ children }) => {
+  return (
+    <PrivateRoute>
+      <div className="mainContainer">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </PrivateRoute>
+  );
+};
+
+export default PrivateLayout;

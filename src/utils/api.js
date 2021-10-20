@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { MdGeneratingTokens } from 'react-icons/md';
 
 export const obtenerProductos = async (successCallback, errorCallback) => {
   const options = { method: 'GET', url: 'http://localhost:5000/productos/' };
@@ -30,6 +31,16 @@ export const eliminarProducto = async (id, successCallback, errorCallback) => {
     method: 'DELETE',
     url: `http://localhost:5000/productos/${id}/`,
     headers: { 'Content-Type': 'application/json' },
+  };
+  await axios.request(options).then(successCallback).catch(errorCallback);
+};
+
+export const otenerDatosUsuario = async (successCallback, errorCallback) => {
+  const options = {
+    method: 'GET',
+    url: 'http://localhost:5000/usuarios/self',
+    headers: { 
+    },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
