@@ -8,7 +8,8 @@ const PrivateRoute = (children) => {
     useEffect(() => {
          const fecthAut0Token =async () =>{
              const accessToken = await  getAccessTokenSilently({
-                audience: `api-autenticacion-gestor-ventas`,
+                //audience: `api-autenticacion-gestor-ventas`,
+                audience : 'https://proyecto-ventas.us.auth0.com/api/v2/',
             });
             localStorage.setItem("token",accessToken);
             console.log(accessToken);
