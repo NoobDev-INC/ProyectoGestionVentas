@@ -10,8 +10,7 @@ function App() {
       domain="proyecto-ventas.us.auth0.com"
       clientId="ZbygeOmsoI68EwmJ79f8DA7A1tP4cl1V"
       redirectUri='https://cryptic-citadel-08995.herokuapp.com/menu'
-      //audience='api-autenticacion-gestor-ventas'
-      audience='https://proyecto-ventas.us.auth0.com/api/v2/'
+      audience='api-autenticacion-gestor-ventas'
     >
       <div className="App">
         <Routes />
