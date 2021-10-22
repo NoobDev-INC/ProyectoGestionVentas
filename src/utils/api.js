@@ -8,7 +8,9 @@ const getToken = () => {
 };
 
 export const obtenerProductos = async (successCallback, errorCallback) => {
-  const options = { method: 'GET', url: `${baseURL}/productos/` };
+  const options = { method: 'GET', url: `${baseURL}/productos/`, headers: {
+    Authorization: getToken(),}, 
+  };
   await axios.request(options).then(successCallback).catch(errorCallback);
 };
 
@@ -17,7 +19,7 @@ export const crearProducto = async (data, successCallback, errorCallback) => {
     method: 'POST',
     url: `${baseURL}/productos/`,
     headers: { 
-      Authorization: getToken(),
+      'Content-Type': 'application/json', Authorization: getToken(),
      },
     data,
   };
@@ -29,7 +31,7 @@ export const editarProducto = async (id, data, successCallback, errorCallback) =
     method: 'PATCH',
     url: `${baseURL}/productos/${id}/`,
     headers: {
-      Authorization: getToken(), },
+      'Content-Type': 'application/json', Authorization: getToken(), },
     data,
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
@@ -40,7 +42,7 @@ export const eliminarProducto = async (id, successCallback, errorCallback) => {
     method: 'DELETE',
     url: `${baseURL}/productos/${id}/`,
     headers: { 
-      Authorization: getToken(),
+      'Content-Type': 'application/json',Authorization: getToken(),
      },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
