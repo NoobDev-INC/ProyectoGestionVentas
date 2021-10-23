@@ -45,10 +45,13 @@ const Usuarios = (props) => {
     const notifyAdd = () => toast.success("Usuario agregado");
     const notifyDelete = () => toast.success("Usuario eliminado");
     const notifyUpdate = () => toast.success("Usuario Actualizado");
+    const getToken = () => {
+        return `Bearer ${localStorage.getItem('token')}`;
+      };
 
-    /* useEffect(() => {
+     useEffect(() => {
         getUsers()
-    }, []) */
+    }, []) 
 
     const getUsers = async () => {
         try {
