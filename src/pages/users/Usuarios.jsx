@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
@@ -18,7 +18,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import 'styles/Table.css'
 import Axios from 'axios'
-import { useEffect } from 'react/cjs/react.development';
+
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -49,7 +49,7 @@ const Usuarios = (props) => {
         return `Bearer ${localStorage.getItem('token')}`;
       };
 
-     useEffect(() => {
+    useEffect(() => {
         getUsers()
     }, []) 
 
