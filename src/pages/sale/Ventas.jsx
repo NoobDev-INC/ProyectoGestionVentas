@@ -45,14 +45,20 @@ const Ventas = (props) => {
     const notifyAdd = () => toast.success("Venta agregada");
     const notifyDelete = () => toast.success("Venta eliminada");
     const notifyUpdate = () => toast.success("Venta Actualizada");
+    const getToken = () => {
+        return `Bearer ${localStorage.getItem('token')}`;
+      };
+
 
     useEffect(() => {
         getVentas()
     }, [])
 
     const getVentas = async () => {
+        
         try {
-            const venta = await Axios.get('https://frozen-beach-86139.herokuapp.com/ventas')
+            const venta = await Axios.get('https://frozen-beach-86139.herokuapp.com/ventas', {headers: {
+                Authorization: getToken()}})
             setVentas(venta.data)
 
         } catch (error) {
@@ -89,8 +95,9 @@ const Ventas = (props) => {
     const addedVenta = async () => {
         try {
             console.log(newItem[0])
-            const venta = await Axios.post('https://frozen-beach-86139.herokuapp.com/ventas', { ...newItem[0], detalles: [] })
-
+            const venta = await Axios.post('https://frozen-beach-86139.herokuapp.com/ventas', { ...newItem[0], detalles: [] },{headers: {
+                Authorization: getToken()}})
+            
             if (venta.status === 200) {
                 setNewItem([])
                 getVentas()
@@ -104,7 +111,8 @@ const Ventas = (props) => {
     }
     const deleteVenta = async () => {
         try {
-            const venta = await Axios.delete('https://frozen-beach-86139.herokuapp.com/ventas/' + idDeleteVenta)
+            const venta = await Axios.delete('https://frozen-beach-86139.herokuapp.com/ventas/' + idDeleteVenta, {headers: {
+                Authorization: getToken()}})
             if (venta.status === 200) {
                 setOpenDialog(false)
                 getVentas()
@@ -119,7 +127,8 @@ const Ventas = (props) => {
             const venta = await Axios.patch('https://frozen-beach-86139.herokuapp.com/ventas/' + id, {
                 cedula: itemEdit.cedula,
                 cliente: itemEdit.cliente
-            })
+            }, {headers: {
+                Authorization: getToken()}})
             if (venta.status === 200) {
                 getVentas()
                 setItemEdit({ index: -1, estado: '', rol: '' })

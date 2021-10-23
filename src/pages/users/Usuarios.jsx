@@ -52,7 +52,8 @@ const Usuarios = (props) => {
 
     const getUsers = async () => {
         try {
-            const user = await Axios.get('https://frozen-beach-86139.herokuapp.com/usuarios')
+            const user = await Axios.get('https://frozen-beach-86139.herokuapp.com/usuarios',{headers: {
+                Authorization: getToken()}})
             setUsuarios(user.data)
         } catch (error) {
             console.log(error)
@@ -87,7 +88,8 @@ const Usuarios = (props) => {
 
     const addedUser = async () => {
         try {
-            const user = await Axios.post('https://frozen-beach-86139.herokuapp.com/usuarios', newItem[0])
+            const user = await Axios.post('https://frozen-beach-86139.herokuapp.com/usuarios', newItem[0],{headers: {
+                Authorization: getToken()}})
 
             if (user.status === 200) {
                 setNewItem([])
@@ -102,7 +104,8 @@ const Usuarios = (props) => {
     }
     const deleteUser = async () => {
         try {
-            const user = await Axios.delete('https://frozen-beach-86139.herokuapp.com/usuarios/' + idDeleteUser)
+            const user = await Axios.delete('https://frozen-beach-86139.herokuapp.com/usuarios/' + idDeleteUser,{headers: {
+                Authorization: getToken()}})
             if (user.status === 200) {
                 setOpenDialog(false)
                 getUsers()
@@ -117,7 +120,8 @@ const Usuarios = (props) => {
             const user = await Axios.patch('https://frozen-beach-86139.herokuapp.com/usuarios/' + id, {
                 rol: itemEdit.rol,
                 estado: itemEdit.estado
-            })
+            },{headers: {
+                Authorization: getToken()}})
             if (user.status === 200) {
                 getUsers()
                 setItemEdit({ index: -1, estado: '', rol: '' })
