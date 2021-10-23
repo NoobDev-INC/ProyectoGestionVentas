@@ -55,6 +55,7 @@ const Usuarios = (props) => {
 
     const getUsers = async () => {
         try {
+            console.log(getToken())
             const user = await Axios.get('https://frozen-beach-86139.herokuapp.com/usuarios',{headers: {
                 Authorization: getToken()}})
             setUsuarios(user.data)

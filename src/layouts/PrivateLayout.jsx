@@ -6,23 +6,29 @@ const PrivateLayout=({children})=>{
     const {isAuthenticated,isloading,getAccessTokenSilently}=useAuth0();
 
     useEffect(()=>{
+        console.log(isAuthenticated)
+        
         const fetchAuth0Token=async()=>{
+            try{
+                const accessToken = await getAccessTokenSilently({
+                    audience: `api-autenticacion-gestor-ventas`
+    
+                });
+                console.log('mi token', accessToken)
+                //2.Recibir token de auth 0
+                localStorage.setItem('token',accessToken);
+                console.log(accessToken);
+                //3. enviarle el token al backend
+                await obtenerDatosUsuario((response)=>{
+                        console.log('response',response);
+                    },
+                    (err)=>{
+                        console.log('err',err);
+                    }    
+                );
+            }catch(err){console.log('Mi error',err)}
             //1.Pedir token a auth0
-            const accessToken = await getAccessTokenSilently({
-                audience: `api-autenticacion-gestor-ventas`
-
-            });
-            //2.Recibir token de auth 0
-            localStorage.setItem('token',accessToken);
-            console.log(accessToken);
-            //3. enviarle el token al backend
-            await obtenerDatosUsuario((response)=>{
-                    console.log('response',response);
-                },
-                (err)=>{
-                    console.log('err',err);
-                }    
-            );
+            
             
         };
         if (isAuthenticated){
