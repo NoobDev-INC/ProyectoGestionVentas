@@ -169,7 +169,7 @@ const Ventas = (props) => {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell></TableCell>
-                                        <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="id" id="standard-basic" variant="standard" /></TableCell>
+                                        <TableCell align="center"></TableCell>
                                         <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].total} name="total" id="standard-basic" variant="standard" /></TableCell>
                                         <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cedula} name="cedula" id="standard-basic" variant="standard" /></TableCell>
                                         <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].cliente} name="cliente" id="standard-basic" variant="standard" /></TableCell>

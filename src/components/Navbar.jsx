@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 const Navbar = () => {
   const history = useHistory();
   const location = useLocation();
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect,isAuthenticated } = useAuth0();
   return (
     <div className="container-navbar">
       <ul
@@ -39,14 +39,14 @@ const Navbar = () => {
           )}
         </div>
         <div className="navbar-user">
+          {!isAuthenticated ?
           <button
             onClick={() => loginWithRedirect()}
             className="bg-indigo-500 my-4 p-2 text-white rounded-lg shadow-md hover:bg-indigo-700 h-10 w-25"
           >
             Iniciar Sesión
-          </button>
-
-          <ImHome size="2.5rem" />
+          </button>: <div>Foto usuario</div>
+          }
         </div>
       </ul>
     </div>

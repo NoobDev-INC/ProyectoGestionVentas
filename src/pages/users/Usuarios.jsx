@@ -158,7 +158,7 @@ const Usuarios = (props) => {
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
                                     <TableCell></TableCell>
-                                    <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0]._id} name="_id" id="standard-basic" variant="standard" /></TableCell>
+                                    <TableCell align="center"></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].rol} name="rol" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].nombre} name="nombre" id="standard-basic" variant="standard" /></TableCell>
                                     <TableCell align="center"><TextField onChange={handlerNewItem} value={newItem[0].estado} name="estado" id="standard-basic" variant="standard" /></TableCell>
