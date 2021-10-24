@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { Dialog, Tooltip } from '@material-ui/core';
 import { obtenerProductos,crearProducto, editarProducto, eliminarProducto } from 'utils/api';
 import 'react-toastify/dist/ReactToastify.css';
+import ReactLoading from 'react-loading';
 
 const Productos = () => {
   const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -11,20 +12,31 @@ const Productos = () => {
   const [textoBoton, setTextoBoton] = useState('Crear Nuevo Producto');
   const [colorBoton, setColorBoton] = useState('blue');
   const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+  const[loading,setLoading]=useState(false);
 
     useEffect(() => {
+      const fetchProductos=async()=>{
+        setLoading(true);
+        await obtenerProductos(
+          (response) => {
+            console.log('la respuesta que se recibio fue', response);
+            setProductos(response.data);
+            setEjecutarConsulta(false);
+            setLoading(false);
+          },
+          (error) => {
+            console.error('Salio un error:', error);
+            setLoading(false);
+          }
+        );
+        
+
+      }
+      
     console.log('consulta', ejecutarConsulta);
     if (ejecutarConsulta) {
-      obtenerProductos(
-        (response) => {
-          console.log('la respuesta que se recibio fue', response);
-          setProductos(response.data);
-        },
-        (error) => {
-          console.error('Salio un error:', error);
-        }
-      );
-      setEjecutarConsulta(false);
+      fetchProductos()
+      
     }
   }, [ejecutarConsulta]);
 
@@ -60,7 +72,7 @@ const Productos = () => {
         </button>
       </div>
       {mostrarTabla ? (
-        <TablaProductos listaProductos={productos} setEjecutarConsulta={setEjecutarConsulta} />
+        <TablaProductos loading={loading} listaProductos={productos} setEjecutarConsulta={setEjecutarConsulta} />
       ) : (
         <FormularioCreacionProductos
           setMostrarTabla={setMostrarTabla}
@@ -73,7 +85,7 @@ const Productos = () => {
   );
 };
 
-const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
+const TablaProductos = ({loading, listaProductos, setEjecutarConsulta }) => {
   const [busqueda, setBusqueda] = useState('');
   const [productosFiltrados, setProductosFiltrados] = useState(listaProductos);
 
@@ -95,28 +107,33 @@ const TablaProductos = ({ listaProductos, setEjecutarConsulta }) => {
       />
       <h2 className='text-2xl font-extrabold text-gray-800'>Todos los productos</h2>
       <div className='hidden md:flex w-full'>
-        <table className='tabla'>
-          <thead>
-            <tr>
-              <th>ID del producto</th>
-              <th>Nombre del producto</th>
-              <th>Marca del producto</th>
-              <th>Precio del producto</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productosFiltrados.map((producto) => {
-              return (
-                <FilaProducto
-                  key={nanoid()}
-                  producto={producto}
-                  setEjecutarConsulta={setEjecutarConsulta}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+        {loading ? ( 
+          <ReactLoading type={'cylon'} color={'#abc123'} height={667} width={375} />
+        ) : (
+          <table className='tabla'>
+            <thead>
+              <tr>
+                <th>ID del producto</th>
+                <th>Nombre del producto</th>
+                <th>Marca del producto</th>
+                <th>Precio del producto</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productosFiltrados.map((producto) => {
+                return (
+                  <FilaProducto
+                    key={nanoid()}
+                    producto={producto}
+                    setEjecutarConsulta={setEjecutarConsulta}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        )}
+
       </div>
       <div className='flex flex-col w-full m-2 md:hidden'>
         {productosFiltrados.map((el) => {
